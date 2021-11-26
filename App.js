@@ -3,34 +3,48 @@ import React from 'react';
 import { Text,StyleSheet,View,TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import BaseConstruction from './Components/BaseConstruction.js';
+import BaseRadar from './Components/BaseRadar.js';
+
 
 function HomeScreen({navigation}) {
   return (
     <View style={styles.main_container}>
-    <TouchableOpacity
-    style={styles.caban_way}
-    onPress = {()=>navigation.navigate('BaseConstruction')}>
-    <Text>base construction</Text>
-    </TouchableOpacity>
-    <TouchableOpacity
-    style={styles.exterior_way}
-    onPress = {()=>console.log('test')}>
-    </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.caban_way}
+        onPress = {()=>navigation.navigate('Root')}>
+          <Text>base construction</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.exterior_way}
+        onPress = {()=>console.log('test')}>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function Root() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="construction" component={BaseConstruction} />
+      <Tab.Screen name="radar" component={BaseRadar} />
+    </Tab.Navigator>
+  );
+}
+
 
 function App() {
   return (
 
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="BaseConstruction" component={BaseConstruction} />
-
+        <Stack.Screen name="home" component={HomeScreen} />
+        <Stack.Screen name="Root" component={Root} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
