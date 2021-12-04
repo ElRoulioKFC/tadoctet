@@ -1,0 +1,13 @@
+#!/bin/bash
+
+pos=$(dirname "$0")
+
+if test $1; then
+    if test $2; then
+        curl -d "@${pos}/${2}" -H "Content-Type: application/json" -X POST 127.0.0.1:3000/$1
+    else
+        curl -d "@${pos}/${1}" -H "Content-Type: application/json" -X POST 127.0.0.1:3000/$1
+    fi
+else
+    echo err
+fi

@@ -1,0 +1,179 @@
+Équipe :
+  k karma change des actions il commence à 0 et peut augmenter ou diminuer
+joueurs :
+  possèdent des statistiques :
+    niveau (permet de connaitre sa puissance ) total des niveaux de chaque caractéristiques /3
+    e endurance ( points de vie 0 il meurt) pour chaque niveau +10 pv commence à 3
+    f force (point de dégâts ajoutés à l'arme) pour chaque niveau +1 f à l'arme
+    a agilité (chance d'esquive des joueurs et de fuite) pour chaque niveau (+ 10% -1% par lvl d'agilité jusque 9 ensuite +1% par lvl est diminué par la force à hauteur de -force/2%)
+    p perception (chance de toucher des armes à distance) pour chaque niveau + 3% chance de touche commence à 36%
+
+
+
+Matériaux :
+  ferraille
+  bois
+  textile
+  alcool
+  médicaments
+
+
+fonctions gérées par le server :
+  création de la grille de jeu liste à deux dimensions
+  génération aléatoire de terrain la base étant en 0/0 la liste crée un environnement en -100/100 x comme y
+  génération aléatoire des ennemis avec augmentation de leurs lvl + nombre  à mesure que l'on s'éloigne du centre
+
+  envois de données sur le server géré par le mobile serveur d'un des participants :
+    inventaire de la base et des joueurs envois d'une arme sur l'inventaire de la base ou des joueurs
+    déplacement sur la grille
+
+
+rêgle du jeu:
+  lorsque un joueur meurt il fait tomber au sol ses objets
+  récupération de sa vie quand il rentre dans la base
+  1 objet ou 1 ressource = 1 slot
+  1f = 1 dégât
+
+  la difficulté est calculé par la distance à la base (int distance ;if x > 0 then distance distance += x; else distance -= x;if y > 0 then distance distance += y; else distance -= y;   )
+  deux joueurs ne peuvent pas être sur la même case sauf la base
+objet:
+  Arme corps à corps :
+    épée de fortune +1 f
+    épée en fer +3 f
+    épée en acier +5 f
+    botwave sword +9 f
+
+    hache de fortune +2 f -1 a
+    hache en fer +5 f -3 a
+    hache en acier +7 f -4 a
+
+    l'Ocaron du temps  ne peut pas taper mais permet de revenir au début du combat
+
+    fourche +2 f
+
+    lasso +1 f + 1 a
+
+    bouclier en bois +2 a
+    bouclier en fer +4 a
+    bouclier en acier +8 a
+    bouclier du monde +4 f +9 a  (obtenu auprès du Père Nel)
+
+    tesson de bouteille + 6 f -8 a
+    Telisson de bouteille +10 f -5 a
+
+  Arme à distance :
+    pistolet -50% des pv
+    fusil -80% des pv
+    sniper kill -2 a
+    pistolaser kill +2 a
+
+  Soins :
+    bandage 20 % des PVs
+    kit de fortune 33 %
+    kit industriel 50 %
+    kit de soin 75 % des PVs
+    kit ultime 100 %
+
+  Armure :
+    tête :
+      poubelle + 1 e
+      casserole + 2 e
+      casquette + 1 e
+
+      seau en bois + 3 e
+      casque en fer + 4 e
+      casque en acier + 6 e
+      casque en titane + 8 e
+      casque en peau de Roche + 19 e
+
+    corps :
+      armure en carton-pâte + 4 e
+      armure en cuir + 7 e
+      armure en plexiglass + 7 e
+      armure de fer + 11 e
+      armure en acier + 17 e
+      armure en titane + 20 e
+      armure en peau de Roche + 39 e
+
+    sac :
+      sac plastique carrouf + 3 slot
+      sac en peau de lézard + 5 slot
+      sac en cuir + 7 slot
+      sac en cuir de jaguar + 11 slot
+      sac westpocket + 17 slot
+      sac luc damiens + 25 slot
+      immense sac rando-rigolo + 50 slot
+      sac béchanelle +75 slot
+      sac en peau de roche +200 slot
+base :
+
+  bâtiment :
+    base commence lvl1 sert à gagner la partie quand lvl 5 (max lvl des autre bâtiment = courant lvl de la base)
+
+    forge sert à créer des armes (lvl 0 armes de fortunes lvl 1 bouclier en bois, fourche et lasso lvl 2 tesson de bouteille et armes en fer lvl 3 armes en acier lvl 4 armes à feu)
+    armurerie sert à créer des armures (lvl 0  bois lvl 1 cuir lvl 2 fer lvl 3 acier lvl 4 titane )
+
+    infirmerie sert à créer des objets de soins (lvl 0 bandage lvl 1 kit de fortune lvl 2 kit insustriel lvl 3 kit de soins lvl 4 kit ultime)
+
+    salle de sport (endurance trainer lvl 0 augmente l'agilité en échange de textile lvl 1 -> bois lvl2 -> alcool lvl3 -> médicaments lvl4 -> ferraille )
+    salle de musculation (force trainer lvl 0 -> ferraille lvl 1 -> alcool lvl 2 -> bois lvl 3 -> textile lvl 4 -> médicaments)
+    salle à obstacles (agilité trainer lvl 0 -> bois lvl 1 -> ferraille lvl 2 -> médicaments lvl 3 -> alcool lvl 4 -> textile )
+    salle à cibles (perception trainer lvl 0 -> alcool lvl 1 -> médicaments lvl 2 -> textile lvl 3 -> ferraille lvl 4 -> bois )
+
+
+Evenement :
+
+  très bon :
+    event 1001 :
+      Un stock de matériel semble laissé à l'abandon vous pouvez tenter de le fouiller ou le laisser la.
+
+  bon :
+    event 2001 :
+      Vous arrivez dans un campement de bandit vous pouvez tenter de partir tout de suite ou de fouiller discretement les lieux (utilise l'agilité)
+
+  Entre Bien et Mal :
+
+  mauvais :
+    event 4001 :
+      Vous arrivez nez a nez avec un bandit préparez vous au combat
+
+  très mauvais :
+    event 5001 :
+      vous découvrez une magnifique oasis qui semble complètement vide, il y a cet énorme tas de ferraille de l'autre côté qui semble avoir été abandonner là.
+
+  légendaire :
+    Père Nel (event 6001):
+              Vous découvrez un bâtiment délabré mais un bout de son écritau reste déchiffrable "éco_e".
+              Il y a une sorte de grande cour sur le côté avec des sortes de tubes en acier, échelles qui mènent à des plateformes en hauteur,
+              surement de vieux jeux pour enfant qui date d'une époque lointaine, très lointaine.
+
+              Vous pouvez essayer de rentrer dans le bâtiment principal ou de repartir
+              choix :
+                entrer | se déplacer
+
+                si se déplacer direction n/s/e/o
+
+                si entrer :
+
+              Au moment ou vous pousser la porte une odeur nauséabonde et lourde devient insoutenable.
+
+    Baut le gourou au sommet d'une montagne
+
+lootable :
+
+  arme de fortune
+  armure en carton pâte
+  bandage
+  poubelle
+  casquette
+  casserole
+  fourche
+  lasso
+
+
+appel API :
+
+-/creerPartie renvoie un int d'id de partie que le joueur vas pouvoir utiliser dans ses prochains appels
+-/grille <id> renvoie la grille de jeu
+-/getBatiment <id> renvoi les niveaux des batiments
+-/sortirCase <id> <Case> envoie au serveur les infos sur les modifications sur la case
