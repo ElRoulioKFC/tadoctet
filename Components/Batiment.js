@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text,StyleSheet,View,TouchableOpacity,Image} from 'react-native'
+import {Text,StyleSheet,View,TouchableOpacity,Image,Button} from 'react-native'
 
 class Batiment extends React.Component {
   constructor(props) {
@@ -15,6 +15,10 @@ class Batiment extends React.Component {
     />
     <Text>Base</Text>
     <Text>lvl. 0</Text>
+    <Button
+      title = "améliorer"
+      color = "#08619b"
+    />
     </View>
   )
   }
