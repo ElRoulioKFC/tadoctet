@@ -4,7 +4,7 @@ const app = exp();
 
 const router = require("./routes/router.js");
 
-app.use(exp.json());
+app.use( exp.json() );
 
 app.get("/", (req, res) => {
     console.log('hello');
@@ -13,6 +13,47 @@ app.get("/", (req, res) => {
 
 app.get("/createPartie",
     router.partie.create
+);
+
+app.get("/join",
+    body("partieId").not().isEmpty(),
+    router.partie.join
+);
+
+app.get("/list",
+    router.partie.listParties
+);
+
+// bloque pendant 30 seconde apres un appel
+app.get("/construire",
+    router.todo
+);
+
+// revoie tout les batiments deja construis
+
+app.get("/getBatimentCostSalleDeMusculation",
+    body('building').default('SalleDeMusculation'),
+    router.building.getBatiment
+);
+
+app.get("/getBatimentCostSalleACibles",
+    body('building').default('SalleACibles'),
+    router.building.getBatiment
+);
+
+app.get("/getBatimentCostInfirmerie",
+    body('building').default('SalleInfirmerie'),
+    router.building.getBatiment
+);
+
+app.get("/getBatimentCostArmurerie",
+    body('building').default('SalleArmurerie'),
+    router.building.getBatiment
+);
+
+app.get("/getBatimentCostForge",
+    body('building').default('forge'),
+    router.building.getBatiment
 );
 
 app.listen(3000, () => {

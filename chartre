@@ -4,9 +4,9 @@ joueurs :
   possèdent des statistiques :
     niveau (permet de connaitre sa puissance ) total des niveaux de chaque caractéristiques /3
     e endurance ( points de vie 0 il meurt) pour chaque niveau +10 pv commence à 3
-    f force (point de dégâts ajoutés à l'arme) pour chaque niveau +1 f à l'arme
-    a agilité (chance d'esquive des joueurs et de fuite) pour chaque niveau (+ 10% -1% par lvl d'agilité jusque 9 ensuite +1% par lvl est diminué par la force à hauteur de -force/2%)
-    p perception (chance de toucher des armes à distance) pour chaque niveau + 3% chance de touche commence à 36%
+    f force (point de dégâts ajoutés à l'arme) pour chaque niveau +1 f à l'arme + 1 slot par force
+    a agilité (chance d'esquive des joueurs et de fuite)  
+    p perception (chance de toucher des armes à distance)
 
 
 
@@ -56,16 +56,16 @@ objet:
     bouclier en bois +2 a
     bouclier en fer +4 a
     bouclier en acier +8 a
-    bouclier du monde +4 f +9 a  (obtenu auprès du Père Nel)
+    bouclier du monde +14 f +12 a  (obtenu auprès du Père Nel)
 
     tesson de bouteille + 6 f -8 a
-    Telisson de bouteille +10 f -5 a
+    Telisson de bouteille +20 f -5 a
 
   Arme à distance :
     pistolet -50% des pv
     fusil -80% des pv
-    sniper kill -2 a
-    pistolaser kill +2 a
+    sniper kill - 8 a + 5 p
+    superGrosFlingueDePoche kill +2 a
 
   Soins :
     bandage 20 % des PVs
@@ -115,31 +115,228 @@ base :
 
     infirmerie sert à créer des objets de soins (lvl 0 bandage lvl 1 kit de fortune lvl 2 kit insustriel lvl 3 kit de soins lvl 4 kit ultime)
 
+    augmentation lvl0 -> 2 ressources = 1 lvl /lvl 1 -> 1 ressource = 1 lvl /lvl 2 -> 2 res = 2 lvl /lvl 3 -> 1res = 2lvl /lvl4 2 res = 3 lvl
     salle de sport (endurance trainer lvl 0 augmente l'agilité en échange de textile lvl 1 -> bois lvl2 -> alcool lvl3 -> médicaments lvl4 -> ferraille )
     salle de musculation (force trainer lvl 0 -> ferraille lvl 1 -> alcool lvl 2 -> bois lvl 3 -> textile lvl 4 -> médicaments)
     salle à obstacles (agilité trainer lvl 0 -> bois lvl 1 -> ferraille lvl 2 -> médicaments lvl 3 -> alcool lvl 4 -> textile )
     salle à cibles (perception trainer lvl 0 -> alcool lvl 1 -> médicaments lvl 2 -> textile lvl 3 -> ferraille lvl 4 -> bois )
 
+forge :
+  lvl 0 :
+    ferraille 2
+    bois 2
+    textile 1
+    alcool 0
+    médicaments 0
+  lvl 1 :
+    ferraille 4
+    bois 3
+    textile 2
+    alcool 1
+    médicaments 0
+
+  lvl 2 :
+    ferraille 12
+    bois 10
+    textile 5
+    alcool 3
+    médicaments 1
+  lvl 3 :
+    ferraille 38
+    bois 22
+    textile 11
+    alcool 19
+    médicaments 4
+
+armurerie :
+  lvl 0 :
+    ferraille 0
+    bois 2
+    textile 3
+    alcool 0
+    médicaments 0
+  lvl 1 :
+    ferraille 4
+    bois 7
+    textile 9
+    alcool 2
+    médicaments 0
+
+  lvl 2 :
+    ferraille 7
+    bois 10
+    textile 17
+    alcool 4
+    médicaments 0
+  lvl 3 :
+    ferraille 12
+    bois 10
+    textile 40
+    alcool 9
+    médicaments 2
+
+infirmerie :
+  lvl 0 :
+    ferraille 0
+    bois 0
+    textile 4
+    alcool 5
+    médicaments 5
+  lvl 1 :
+    ferraille 0
+    bois 5
+    textile 6
+    alcool 8
+    médicaments 12
+
+  lvl 2 :
+    ferraille 3
+    bois 15
+    textile 20
+    alcool 19
+    médicaments 22
+  lvl 3 :
+    ferraille 6
+    bois 7
+    textile 15
+    alcool 35
+    médicaments 38
+
+salle de sport :
+  lvl 0 :
+    ferraille 2
+    bois 2
+    textile 1
+    alcool 0
+    médicaments 0
+  lvl 1 :
+    ferraille 4
+    bois 3
+    textile 2
+    alcool 1
+    médicaments 0
+
+  lvl 2 :
+    ferraille 8
+    bois 6
+    textile 4
+    alcool 3
+    médicaments 1
+  lvl 3 :
+    ferraille 18
+    bois 15
+    textile 8
+    alcool 16
+    médicaments 1
+
+salle de musculation :
+  lvl 0 :
+    ferraille 4
+    bois 0
+    textile 1
+    alcool 0
+    médicaments 0
+  lvl 1 :
+    ferraille 8
+    bois 1
+    textile 1
+    alcool 1
+    médicaments 0
+
+  lvl 2 :
+    ferraille 8
+    bois 4
+    textile 4
+    alcool 2
+    médicaments 0
+  lvl 3 :
+    ferraille 15
+    bois 10
+    textile 9
+    alcool 15
+    médicaments 1
+
+salle à obstacles :
+  lvl 0 :
+    ferraille 2
+    bois 3
+    textile 1
+    alcool 1
+    médicaments 0
+  lvl 1 :
+    ferraille 5
+    bois 6
+    textile 3
+    alcool 1
+    médicaments 0
+
+  lvl 2 :
+    ferraille 8
+    bois 8
+    textile 5
+    alcool 2
+    médicaments 1
+  lvl 3 :
+    ferraille 12
+    bois 10
+    textile 9
+    alcool 10
+    médicaments 2
+
+salle à cibles :
+  lvl 0 :
+    ferraille 2
+    bois 1
+    textile 5
+    alcool 4
+    médicaments 0
+  lvl 1 :
+    ferraille 8
+    bois 7
+    textile 10
+    alcool 15
+    médicaments 0
+
+  lvl 2 :
+    ferraille 10
+    bois 11
+    textile 15
+    alcool 19
+    médicaments 5
+  lvl 3 :
+    ferraille 15
+    bois 13
+    textile 17
+    alcool 20
+    médicaments 7
 
 Evenement :
 
   très bon :
     event 1001 :
-      Un stock de matériel semble laissé à l'abandon vous pouvez tenter de le fouiller ou le laisser la.
+      Un stock de matériel semble laissé à l'abandon depuis un certain temps vous pouvez tenter de le fouiller ou le laisser là.
+        choix :
+          fouiller :
+            entre 2 et 6 de chaque
+          se déplacer :
 
   bon :
     event 2001 :
-      Vous arrivez dans un campement de bandit vous pouvez tenter de partir tout de suite ou de fouiller discretement les lieux (utilise l'agilité)
+      Vous arrivez dans un campement de bandit de nuit , il semble qu'il y ait de la lumière qui filtre à travers les tentes. Vous pouvez tenter de partir tout de suite ou de fouiller discrètement les lieux
 
   Entre Bien et Mal :
 
   mauvais :
     event 4001 :
-      Vous arrivez nez a nez avec un bandit préparez vous au combat
-
+      Vous vous trouvez nez à nez avec un bandit
+        choix :
+          combattre :
+            mode combat enclenché avec l'ennemi
+          fuir :
+            test de fuite si réussi le joueur peut se déplacer mais l'évènement n'est pas changé
   très mauvais :
     event 5001 :
-      vous découvrez une magnifique oasis qui semble complètement vide, il y a cet énorme tas de ferraille de l'autre côté qui semble avoir été abandonner là.
+      vous découvrez une magnifique oasis qui semble complètement vide, il y a cet énorme tas de ferraille de l'autre côté qui semble avoir été abandonné là il y a peu de temps.
 
   légendaire :
     Père Nel (event 6001):
@@ -157,7 +354,7 @@ Evenement :
 
               Au moment ou vous pousser la porte une odeur nauséabonde et lourde devient insoutenable.
 
-    Baut le gourou au sommet d'une montagne
+    Bot le gourou au sommet d'une montagne
 
 lootable :
 
@@ -170,6 +367,18 @@ lootable :
   fourche
   lasso
 
+Action/choix du joueur possible :
+
+-combattre (mise en place du mode combat)
+-parler (mise en place du mode débat)
+-fuir
+-se déplacer
+-entrer
+-fouiller
+-n
+-s
+-e
+-o
 
 appel API :
 
@@ -177,3 +386,219 @@ appel API :
 -/grille <id> renvoie la grille de jeu
 -/getBatiment <id> renvoi les niveaux des batiments
 -/sortirCase <id> <Case> envoie au serveur les infos sur les modifications sur la case
+
+
+
+ennemis :
+  possèdent des statistiques :
+    niveau (permet de connaitre sa puissance ) total des niveaux de chaque caractéristiques /3
+    e endurance ( points de vie 0 il meurt) pour chaque niveau +10 pv commence à 3
+    f force (point de dégâts ajoutés à l'arme) pour chaque niveau +1 f à l'arme
+    a agilité (chance d'esquive des joueurs et de fuite) pour chaque niveau (+ 10% -1% par lvl d'agilité jusque 9 ensuite +1% par lvl est diminué par la force à hauteur de -force/2%)
+    p perception (chance de toucher des armes à distance) pour chaque niveau + 3% chance de touche commence à 36%
+
+chat :
+  e : 1
+  f : 2
+  a : 7
+  p : 0
+
+rat :
+  e : 0.5
+  f : 1
+  a : 10
+  p : 0
+
+grizzly :
+  e : 15
+  f : 10
+  a : 1
+
+chien :
+  e : 2
+  f : 4
+  a : 3
+
+chien alpha :
+  e : 8
+  f : 14
+  a : 4
+
+bonhomme de neige mutant :
+  e : 1
+  f : 20
+  a : -2
+
+hallucination :
+  e : 1
+  f : 2
+  a : 18
+
+Pere Nel :
+  e : 25
+  f : 15
+  a : -5
+
+Roche :
+  e : 50
+  f : 20
+  a : -10
+
+
+
+
+
+ennemis lvl 0 :
+
+voyou :
+  e : 1
+  f : 2
+  a : 2
+  p : 0
+
+ennemis lvl 1 :
+
+voyou :
+  e : 2
+  f : 3
+  a : 3
+  p : 0
+
+brigant :
+  e : 4
+  f : 2
+  a : 1
+  p : 0
+
+ennemis lvl 2 :
+
+voyou :
+  e : 3
+  f : 3
+  a : 4
+  p : 0
+
+brigant :
+  e : 5
+  f : 2
+  a : 1
+  p : 0
+
+ennemis lvl 3 :
+
+voyou :
+  e : 3
+  f : 4
+  a : 4
+  p : 0
+
+brigant :
+  e : 5
+  f : 2
+  a : 1
+  p : 0
+
+bandit :
+  e : 5
+  f : 4
+  a : 4
+  p : 0
+
+ennemis lvl 4 :
+
+voyou :
+  e : 4
+  f : 4
+  a : 4
+  p : 0
+
+brigant :
+  e : 6
+  f : 3
+  a : 1
+  p : 0
+
+bandit :
+  e : 6
+  f : 4
+  a : 4
+  p : 0
+
+ennemis lvl 5 :
+
+voyou :
+  e : 3
+  f : 4
+  a : 4
+  p : 0
+
+brigant :
+  e : 6
+  f : 3
+  a : 2
+  p : 0
+
+bandit :
+  e : 7
+  f : 5
+  a : 3
+  p : 0
+
+ennemis lvl 6-10:
+
+voyou :
+  e : 5
+  f : 5
+  a : 5
+  p : 0
+
+brigant :
+  e : 8
+  f : 3
+  a : 2
+  p : 0
+
+bandit :
+  e : 8
+  f : 5
+  a : 5
+  p : 0
+
+boss de clan :
+  e : 5
+  f : 10
+  a : 2
+  p : 0
+
+ennemis lvl 11-20:
+
+voyou :
+  e : 8
+  f : 8
+  a : 5
+  p : 0
+
+brigant :
+  e : 15
+  f : 4
+  a : 2
+  p : 0
+
+bandit :
+  e : 13
+  f : 8
+  a : 5
+  p : 0
+
+boss de clan :
+  e : 7
+  f : 20
+  a : 2
+  p : 0
+
+chef de district :
+  e : 15
+  f : 35
+  a : 0
+  p : 0
+

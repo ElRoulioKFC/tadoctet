@@ -2,12 +2,14 @@
 
 pos=$(dirname "$0")
 
-if test $1; then
-    if test $2; then
-        curl -d "@${pos}/${2}" -H "Content-Type: application/json" -X POST 127.0.0.1:3000/$1
-    else
-        curl -d "@${pos}/${1}" -H "Content-Type: application/json" -X POST 127.0.0.1:3000/$1
-    fi
+method=$1
+path=$2
+data=$3
+
+if [ $method = "help" ]; then
+    echo "use: test methode apiPath dataFile"
 else
-    echo err
+    if test $file; then
+        curl -d "@${file}" -H "Content-Type: application/json" -X ${method} "127.0.0.1:3000$path"
+    fi
 fi
