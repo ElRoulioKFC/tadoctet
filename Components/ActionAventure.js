@@ -1,9 +1,13 @@
 import React from 'react'
 import {Text,StyleSheet,View,TouchableOpacity,Pressable} from 'react-native'
-
+import BoutonAction from './BoutonAction.js'
 
 class ActionAventure extends React.Component {
-
+  constructor(props){
+    super(props)
+    this.listeChoix = props.listeChoix
+    this.deplacement = props.deplacement
+  }
   _deplacement(){
     return (
       <View style = {styles.main_container}>
@@ -52,11 +56,28 @@ class ActionAventure extends React.Component {
 
     )
   }
+  _action(listeChoix){
+    var boutons = [];
+    listeChoix.forEach((action) => {
+      console.log(action)
+      boutons.push(<BoutonAction texte={action} />)
+    });
+    return(
+      <View style = {styles.container}>
+      {boutons}
+      </View>
+    )
+  }
+
 
   render(){
     return(
       <View style = {styles.main_container}>
-        {this._deplacement()}
+        <View style = {styles.container_bouton}>
+          {this._action(this.listeChoix)}
+        </View>
+        <View style = {styles.container_life}>
+        </View>
       </View>
   )
   }
@@ -65,6 +86,7 @@ class ActionAventure extends React.Component {
 const styles = StyleSheet.create({
   main_container :{
     flex : 1,
+    flexDirection : 'row'
   },
   row :{
     flexDirection : 'row',
@@ -84,6 +106,15 @@ const styles = StyleSheet.create({
   },
   empty : {
     flex : 1,
+  },
+  container : {
+    flex : 1
+  },
+  container_life : {
+    flex : 1
+  },
+  container_bouton : {
+    flex : 2
   }
 })
 export default ActionAventure
