@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#create a partie
+echo create a partie
+curl 127.0.0.1:3000/createPartie > res_player1
+
+#list parties
+echo list parties
+echo "{\"partieId\": $(curl 127.0.0.1:3000/list | jq '.[0]')}" > res_parties
+
+#connect to a partie
+echo connect to a partie
+curl -X GET -d "@res_parties" -H "Content-Type: application/json" 127.0.0.1:3000/join > res_player2
+
+#get batiment cost
+echo get batiment cost
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostSalleDeMusculation > res_salleDeMusculation
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostInfirmerie > res_infirmerieCost
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostSalleDeSport > res_salleDeSport
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostSalleACibles > res_salleACibles
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostArmurerie > res_armurerie
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostForge > res_forgeCost
+
+echo getGrille
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getGrille > res_getGrille

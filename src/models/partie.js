@@ -11,12 +11,9 @@ const setGrille = (grille, x, y, data) => {
 
 const Map = (width, height) => {
     let grille = new Array(height);
-    for (let i=0; i < height; i++) {
+
+    for (let i=0; i < height; i++)
         grille[i] = new Array(width);
-        for (let j=0; j < height; j++) {
-            grille[i][j] = 0;
-        }
-    }
 
     let map = {
         width,

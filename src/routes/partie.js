@@ -22,7 +22,6 @@ const join = async(req, res) => {
     try{
         let partieId = req.body.partieId;
         let playerId = partieModel.join(partieId);
-        console.log("ok")
         res.status(200).json({playerId});
     } catch( err ) {
         console.log(`join: ${err}`);
@@ -54,9 +53,22 @@ const listParties = async(req, res) => {
     }
 }
 
+const getGrille = (req, res) => {
+    console.log('call getGrille');
+
+    try {
+        let grille = partieModel.getData(req.body.partieId, 'map');
+        res.status(200).json(grille);
+    } catch( err ) {
+        console.log(`getGrille: ${err}`);
+        res.status(0).send('err');
+    }
+}
+
 module.exports = {
     create,
     addPartieData,
     join,
-    listParties
+    listParties,
+    getGrille
 };

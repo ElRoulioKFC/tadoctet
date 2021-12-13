@@ -10,6 +10,10 @@ const getBatiment = async (req, res) => {
     res.status(200).json({requirements});
 }
 
+const construire = async(req, res) => {
+}
+
 module.exports = {
-    getBatiment
+    getBatiment,
+    construire
 };

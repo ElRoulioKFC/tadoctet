@@ -29,25 +29,35 @@ app.get("/construire",
     router.todo
 );
 
+app.get("/getGrille",
+    body("partieId").not().isEmpty(),
+    router.partie.getGrille
+);
+
 // revoie tout les batiments deja construis
 
 app.get("/getBatimentCostSalleDeMusculation",
-    body('building').default('SalleDeMusculation'),
+    body('building').default('salleDeMusculation'),
+    router.building.getBatiment
+);
+
+app.get("/getBatimentCostSalleDeSport",
+    body('building').default('salleDeSport'),
     router.building.getBatiment
 );
 
 app.get("/getBatimentCostSalleACibles",
-    body('building').default('SalleACibles'),
+    body('building').default('salleACibles'),
     router.building.getBatiment
 );
 
 app.get("/getBatimentCostInfirmerie",
-    body('building').default('SalleInfirmerie'),
+    body('building').default('infirmerie'),
     router.building.getBatiment
 );
 
 app.get("/getBatimentCostArmurerie",
-    body('building').default('SalleArmurerie'),
+    body('building').default('armurerie'),
     router.building.getBatiment
 );
 
