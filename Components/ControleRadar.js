@@ -40,7 +40,7 @@ class ControleRadar extends React.Component {
       <Pressable style={styles.pressable} >
         <Image
           style={styles.image}
-          source={require("../Images/perso.png")}
+          source={require("../Images/radar.png")}
         />
       </Pressable>
 
