@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#create a partie
+echo ============== create a partie ==============
+curl 127.0.0.1:3000/createPartie > res_player1
+cat res_player1
+
+#list parties
+echo ============== list parties ==============
+echo "{\"partieId\": $(curl 127.0.0.1:3000/list | jq '.[0]')}" > res_parties
+cat res_parties
+
+#get batiment cost
+echo ============== get grille ==============
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getGrille > res_grille
+
+#move
+echo ============== move ==============
+cat res_player1 | jq '.direction="n"' > query_mvt
+curl -X GET -H "Content-Type: application/json" -d "@query_mvt" 127.0.0.1:3000/move > res_mvt
+
+cat res_player1 | jq '.direction="e"' > query_mvt
+curl -X GET -H "Content-Type: application/json" -d "@query_mvt" 127.0.0.1:3000/move > res_mvt
+
+cat res_player1 | jq '.direction="s"' > query_mvt
+curl -X GET -H "Content-Type: application/json" -d "@query_mvt" 127.0.0.1:3000/move > res_mvt
+
+cat res_player1 | jq '.direction="o"' > query_mvt
+curl -X GET -H "Content-Type: application/json" -d "@query_mvt" 127.0.0.1:3000/move > res_mvt
+
+#get batiment cost
+echo ============== get batiment cost ==============
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostSalleDeMusculation > res_salleDeMusculation
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostInfirmerie > res_infirmerieCost
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostSalleDeSport > res_salleDeSport
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostSalleACibles > res_salleACibles
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostArmurerie > res_armurerie
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostForge > res_forgeCost
+
+echo ============== getGrille ==============
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getGrille > res_getGrille
+
