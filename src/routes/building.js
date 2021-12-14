@@ -2,6 +2,8 @@ const buildingModel = require("../models/building.js");
 const partieModel = require("../models/partie.js");
 
 const getBatiment = async (req, res) => {
+    console.log('call getBatiment')
+
     let building = req.body.building;
     let lvl = partieModel.getData(req.body.partieId, 'lvl');
 

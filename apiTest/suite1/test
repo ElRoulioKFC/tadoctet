@@ -1,19 +1,20 @@
 #!/bin/bash
 
 #create a partie
-echo create a partie
+echo ============== create a partie ==============
 curl 127.0.0.1:3000/createPartie > res_player1
 
 #list parties
-echo list parties
-echo "{\"partieId\": $(curl 127.0.0.1:3000/list | jq '.[0]')}" > res_parties
+echo ============== list parties ==============
+curl 127.0.0.1:3000/list > res_parties
+echo "{\"partieId\": $(cat res_parties |  jq '.[0]')}" > query_partie
 
 #connect to a partie
-echo connect to a partie
-curl -X GET -d "@res_parties" -H "Content-Type: application/json" 127.0.0.1:3000/join > res_player2
+echo ============== connect to a partie ==============
+curl -X GET -d "@query_partie" -H "Content-Type: application/json" 127.0.0.1:3000/join > res_player2
 
 #get batiment cost
-echo get batiment cost
+echo ============== get batiment cost ==============
 curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostSalleDeMusculation > res_salleDeMusculation
 curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostInfirmerie > res_infirmerieCost
 curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostSalleDeSport > res_salleDeSport
@@ -21,5 +22,5 @@ curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000
 curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostArmurerie > res_armurerie
 curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostForge > res_forgeCost
 
-echo getGrille
+echo ============== getGrille ==============
 curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getGrille > res_getGrille

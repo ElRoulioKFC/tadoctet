@@ -22,7 +22,7 @@ const join = async(req, res) => {
     try{
         let partieId = req.body.partieId;
         let playerId = partieModel.join(partieId);
-        res.status(200).json({playerId});
+        res.status(200).json({partieId, playerId});
     } catch( err ) {
         console.log(`join: ${err}`);
         res.status(300).send('err');

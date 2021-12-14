@@ -54,3 +54,15 @@ Vous pouvez essayer de rentrer dans le bâtiment principal ou de repartir`
 const getEvent = (eventId) => {
     return eventsList[eventId[0]][eventId[1]];
 }
+
+const getEnnemy = (lvl, id) => {
+    let ennemy = ennemyList[lvl][id];
+    ennemy.onMap = `${ennemy.name} ${lvl}`;
+    ennemy.type = 'ennemy';
+    ennemy.color = getColor(lvl);
+    return ennemy;
+}
+
+const getRandomEnnemy = (lvl) => {
+    return getEnnemy(lvl, Math.floor(Math.random() * ennemyList[lvl].length));
+}

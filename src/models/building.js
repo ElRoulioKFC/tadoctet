@@ -217,6 +217,15 @@ const getRequirements = (building, lvl) => {
     return requirements[building][lvl]
 }
 
+const Base = () => {
+    return {
+        type: "base",
+        onMap: "base",
+        lvl: 0
+    }
+}
+
 module.exports = {
     getRequirements,
+    Base
 }

@@ -34,6 +34,12 @@ app.get("/getGrille",
     router.partie.getGrille
 );
 
+app.get("/move",
+    body("partieId").not().isEmpty(),
+    body("direction").not().isEmpty(),
+    router.joueur.move
+);
+
 // revoie tout les batiments deja construis
 
 app.get("/getBatimentCostSalleDeMusculation",
