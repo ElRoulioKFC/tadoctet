@@ -1,6 +1,7 @@
 import React from 'react'
 import {Text,StyleSheet,View,TouchableOpacity,Pressable} from 'react-native'
 import BoutonAction from './BoutonAction.js'
+import StatJoueur from './StatJoueur.js'
 
 class ActionAventure extends React.Component {
   constructor(props){
@@ -58,9 +59,8 @@ class ActionAventure extends React.Component {
   }
   _action(listeChoix){
     var boutons = [];
-    listeChoix.forEach((action) => {
-      console.log(action)
-      boutons.push(<BoutonAction texte={action} />)
+    listeChoix.forEach((action,i) => {
+      boutons.push(<BoutonAction key= {i}texte={action} />)
     });
     return(
       <View style = {styles.container}>
@@ -77,6 +77,7 @@ class ActionAventure extends React.Component {
           {this._action(this.listeChoix)}
         </View>
         <View style = {styles.container_life}>
+          <StatJoueur endurance={"7"} agilite={"7"} force={"7"} perception={"7"} niveau={"3"} pv = {55}/>
         </View>
       </View>
   )

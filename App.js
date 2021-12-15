@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Text,StyleSheet,View,TouchableOpacity,Image } from 'react-native';
+import { Text,StyleSheet,View,Pressable,Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -8,20 +8,30 @@ import BaseConstruction from './Components/BaseConstruction.js';
 import BaseRadar from './Components/BaseRadar.js';
 import Aventure from './Components/Aventure.js';
 import Inventaire from './Components/Inventaire.js';
-
+import RejoindrePartie from './Components/RejoindrePartie.js'
 function HomeScreen({navigation}) {
   return (
     <View style={styles.main_container}>
-      <TouchableOpacity
-        style={styles.caban_way}
-        onPress = {()=>navigation.navigate('Root')}>
-          <Text>base construction</Text>
-      </TouchableOpacity>
+      <View style={styles.container_partie}>
+        <RejoindrePartie/>
+      </View>
+      <View style={styles.container_choix}>
+        <View style={styles.caban_way}>
+          <Pressable
+            style={styles.Pressable_caban}
+            onPress = {()=>navigation.navigate('Root')}>
+              <Text style={styles.Pressable_text}>Le confort</Text>
+          </Pressable>
+        </View>
+        <View style={styles.exterior_way}>
+          <Pressable
+            style={styles.Pressable_exterior}
+            onPress =  {()=>navigation.navigate('Aventurier')}>
+            <Text style={styles.Pressable_text}>L'aventure</Text>
 
-      <TouchableOpacity
-        style={styles.exterior_way}
-        onPress =  {()=>navigation.navigate('Aventurier')}>
-      </TouchableOpacity>
+          </Pressable>
+        </View>
+      </View>
     </View>
   );
 }
@@ -83,20 +93,53 @@ function App() {
 }
 const styles = StyleSheet.create({
   main_container: {
-  flexDirection: 'row',
-  flex:1
+  flex:1,
+  backgroundColor : '#b3daff'
 },
   caban_way:{
-    backgroundColor: 'red',
-    flex:1
+    flex:1,
+    justifyContent : 'center',
   },
   exterior_way:{
-    backgroundColor: 'blue',
-    flex:1
+    flex:1,
   },
   icon: {
     width: 30,
     height: 30
+  },
+  container_partie : {
+    flex : 3
+  },
+  container_choix :{
+    flex : 4,
+    justifyContent : 'center',
+    margin : 10,
+    marginTop : 0
+  },
+  Pressable_caban : {
+    backgroundColor: 'red',
+    padding : 50,
+    borderRadius : 25,
+    margin : 25,
+    marginLeft : 50,
+    marginRight : 50,
+    justifyContent : 'center',
+
+
+  },
+  Pressable_exterior : {
+    backgroundColor: 'blue',
+    padding : 50,
+    borderRadius : 25,
+    margin : 25,
+
+    marginLeft : 50,
+    marginRight : 50,
+
+  },
+  Pressable_text : {
+    fontSize : 28,
+
   }
 })
 export default App;

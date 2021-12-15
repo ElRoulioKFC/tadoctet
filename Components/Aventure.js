@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   container_action : {
     flex : 3,
-    backgroundColor : 'red'
+    backgroundColor : '#000080'
   }
 })
 export default Aventure
