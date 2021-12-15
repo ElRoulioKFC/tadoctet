@@ -1,7 +1,13 @@
-const partieModel = require("../models/partie.js");
-const itemModel = require("../models/item.js");
+const itemModel = require("./item.js");
 
 const joueurList = {};
+
+const dirToCoo = {
+    'n': [0, -1],
+    'e': [1,  0],
+    's': [0,  1],
+    'o': [-1, 0]
+};
 
 const Joueur = (pId) => {
     let id = joueurList[pId].length;
@@ -16,15 +22,13 @@ const Joueur = (pId) => {
         arme: null,
         bouclier: null,
         invSize: 2,
-        x: 0,
-        y: 0,
+        coo: [0, 0],
         inventaire: [
         ]
     };
 
     joueurList[pId].push( j );
     
-    console.log( joueurList[pId])
     return id;
 };
 
@@ -35,23 +39,64 @@ const newTeam = (pId) => {
 const pickup = () => {
 }
 
-const equipe = (jId, slot) => {
-    let j = joueurList[jId];
+const inspect = () => {
+}
+
+const equipe = (jId, pId, slot) => {
+    let j = joueurList[pId][jId];
     let item = j.inventaire[slot];
 
-    if( item && item.isArmor )
+    if( item && item.bodyPart )
         j[item.bodyPart] = item.e;
 }
 
-const move = (jId, pId) => {
+const move = (jId, pId, dir) => {
+    // next case
+    // case vide ou base ?
+    //  oui: deplace j renvoie event
+    //  non: renvoie err
+    let partieModel = require("../models/partie.js");
+    let j = joueurList[pId][jId]
+    let [x, y] = j.coo;
+    x += dirToCoo[dir][0];
+    y += dirToCoo[dir][1];
+    let tile = partieModel.getGrille(pId, x, y);
+    if( tile.players.length == 0 || tile.type == 'base') {
+        j.coo = [x, y];
+    }
+    return tile;
 };
+
+const die = (jId, pId) => {
+    let partieModel = require("../models/partie.js");
+
+    let j = joueurList[pId][jId]
+    let [x, y] = j.coo;
+    [x, y] = partieModel.mapToRep(partieModel.getMap(pId), x, y);
+    partieModel.addToCell(pId, x, y, 'inventaire', j.inventaire)
+    j.inventaire = {};
+    j.coo = [0, 0];
+    partieModel.addToCell(pId, x, y, 'players', []);
+    partieModel.parties[pId].map.grille[y][x].players.push(j);
+}
+
+const drop = (jId, pId, slot) => {
+    let partieModel = require("../models/partie.js");
+    let j = joueurList[pId][jId]
+    let [x, y] = j.coo;
+    let item = j.inventaire[slot];
+    let tile = partieModel.getGrille(pId, x, y);
+    partieModel.getMap(pId).inventaire.push(item);
+}
 
 module.exports = {
     move,
     Joueur,
     equipe,
     pickup,
-    newTeam
+    newTeam,
+    die,
+    inspect
 };
 
 test = () => {

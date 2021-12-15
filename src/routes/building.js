@@ -5,7 +5,7 @@ const getBatiment = async (req, res) => {
     console.log('call getBatiment')
 
     let building = req.body.building;
-    let lvl = partieModel.getData(req.body.partieId, 'lvl');
+    let lvl = partieModel.getData(req.body.partieId, 'nextLvlBat')[building];
 
     let requirements = buildingModel.getRequirements(building, lvl)
 

@@ -11,6 +11,10 @@ app.get("/", (req, res) => {
     res.status(200).send("hello");
 })
 
+app.get("/getBaseRessources",
+    router.partie.getBaseRessources
+);
+
 app.get("/createPartie",
     router.partie.create
 );
@@ -26,7 +30,7 @@ app.get("/list",
 
 // bloque pendant 30 seconde apres un appel
 app.get("/construire",
-    router.todo
+    router.partie.construire
 );
 
 app.get("/getGrille",
@@ -36,8 +40,13 @@ app.get("/getGrille",
 
 app.get("/move",
     body("partieId").not().isEmpty(),
+    body("playerId").not().isEmpty(),
     body("direction").not().isEmpty(),
     router.joueur.move
+);
+
+app.get("/die",
+    router.joueur.die
 );
 
 // revoie tout les batiments deja construis
@@ -69,6 +78,11 @@ app.get("/getBatimentCostArmurerie",
 
 app.get("/getBatimentCostForge",
     body('building').default('forge'),
+    router.building.getBatiment
+);
+
+app.get("/getBatimentCostBase",
+    body('building').default('base'),
     router.building.getBatiment
 );
 

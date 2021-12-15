@@ -1,4 +1,7 @@
-const eventsList = [
+let eventProba = [0.8, 0.09, 0.08, 0.02, 0.01]
+let eventProbaCum = [0.8, 0.89, 0.97, 0.99, 1]
+
+let eventsList = [
     // tres bon
     [
         {
@@ -17,8 +20,8 @@ const eventsList = [
 
     //neutre
     [
-        [
-        ]
+        {
+        }
     ],
 
     // mauvais
@@ -32,7 +35,7 @@ const eventsList = [
     // tres mauvais
     [
         {
-            "text": "vous découvrez une magnifique oasis qui semble complètement vide, il y a cet énorme tas de ferraille de l'autre côté qui semble avoir été abandonné là il y a peu de temps."
+            "text": "vous découvrez une magnifique oasis qui semble complètement vide, il y a cet énorme tas de ferraille de l'autre côté qui semble avoir été abandonné là il y a peu de temps.",
             "choix": []
         }
     ],
@@ -44,25 +47,35 @@ const eventsList = [
 Il y a une sorte de grande cour sur le côté avec des sortes de tubes en acier, échelles qui mènent à des plateformes en hauteur,
 surement de vieux jeux pour enfant qui date d'une époque lointaine, très lointaine.
 
-Vous pouvez essayer de rentrer dans le bâtiment principal ou de repartir`
+Vous pouvez essayer de rentrer dans le bâtiment principal ou de repartir`,
 
             "choix": ["entrer", "se deplacer"]
         }
     ]
 ];
 
-const getEvent = (eventId) => {
-    return eventsList[eventId[0]][eventId[1]];
+for(let i=0; i<6; i++)
+    for(let j=0; j<eventsList[i].length; j++)
+        eventsList[i][j].lvl = i;
+
+const getColor = (lvl) => {
+    return [
+        '#3ec100',
+        '#5da200',
+        '#7c8300',
+        '#9b6400',
+        '#ba4500',
+        '#d92600'
+    ][lvl];
 }
 
-const getEnnemy = (lvl, id) => {
-    let ennemy = ennemyList[lvl][id];
-    ennemy.onMap = `${ennemy.name} ${lvl}`;
-    ennemy.type = 'ennemy';
-    ennemy.color = getColor(lvl);
-    return ennemy;
+const getRandomEvent = (lvl) => {
+    let n = Math.random();
+    let eId;
+    for( eId=0; n < eventProbaCum[eId]; eId++ ){}
+    return eventsList[eId][Math.floor( Math.random() * eventsList[eId].length)]
 }
 
-const getRandomEnnemy = (lvl) => {
-    return getEnnemy(lvl, Math.floor(Math.random() * ennemyList[lvl].length));
-}
+module.exports = {
+    getRandomEvent
+};

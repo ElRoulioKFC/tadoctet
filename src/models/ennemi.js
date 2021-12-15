@@ -1,4 +1,4 @@
-const ennemyList = [
+let ennemyList = [
     [
         {
             name: 'voyou',

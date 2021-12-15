@@ -1,4 +1,5 @@
 const ennemyModel = require("./ennemi.js");
+const eventModel = require("./event.js");
 const buildingModel = require("./building.js");
 const joueurModel = require('./joueur.js');
 
@@ -12,44 +13,71 @@ const joueurModel = require('./joueur.js');
 let nextPartieId = 0;
 let parties = {};
 
-const getGrille = (grille, x, y) => {
-    return grille.grille[y + grille.height/2][x + grille.width/2];
+const getGrille = (pId, x, y) => {
+    let map = parties[pId].map;
+    return map.grille[y + map.height/2][x + map.width/2];
 }
 
-const setGrille = (grille, x, y, data) => {
-    grille.grille[y + grille.height/2][x + grille.width/2] = data;
+const setGrille = (pId, x, y, data) => {
+    let map = parties[pId].map;
+    map.grille[y + map.height/2][x + map.width/2] = data;
 }
 
 const mapToMap = (map, x, y) => {
     return [x - map.width / 2, y - map.height / 2];
 }
 
+const mapToRep = (map, x, y) => {
+    return [x + map.width / 2, y + map.height / 2];
+}
+
 const printMap = (map) => {
     let str = "";
     for (let i=0; i < map.height; i++) {
         for (let j=0; j < map.width; j++) {
-            str = `${str} [${map.grille[i][j].onMap}]`;
+            if( map.grille[i][j]['type'] == 'event')
+                str = `${str} [${map.grille[i][j].event.lvl}]`;
+            else if ( map.grille[i][j]['type'] == 'base')
+                str = `${str} [${map.grille[i][j].base.lvl}]`;
+            if( map.grille[i][j].players.length > 0)
+                str = `${str} [j]`;
         }
         str = `${str}\n`
     }
     console.log(str)
 }
 
-const putEvent = (map, px, py) => {
-    let [x, y] = mapToMap(map, px, py);
-    let dst = Math.sqrt(x*x + y*y);
-    let lvl = Math.floor(dst * 7 / map.maxDistance);
-    // todo: mettre event au lieu de ennemy
-    setGrille(map, x, y, ennemyModel.getRandomEnnemy(lvl));
+const addToCell = (pId, x, y, key, val) => {
+    let map = parties[pId].map;
+    map.grille[y][x][key] = val;
 }
 
-const Map = (width, height) => {
+const getMap = (pId) => {
+    return parties[pId].map;
+}
+
+const putEvent = (pId, px, py) => {
+    let map = parties[pId].map;
+    let [x, y] = mapToMap(map, px, py);
+    let dst = Math.sqrt(x*x + y*y);
+    let lvl = dst / map.maxDistance;
+    // todo: mettre event au lieu de ennemy
+    // setGrille(map, x, y, ennemyModel.getRandomEnnemy(lvl));
+    let ev = eventModel.getRandomEvent(lvl);
+    addToCell(pId, px, py, 'event', ev);
+    addToCell(pId, px, py, 'type', 'event');
+}
+
+const Map = (width, height, pId) => {
     let grille = new Array(height);
 
     for (let i=0; i < height; i++) {
         grille[i] = new Array(width);
         for (let j=0; j < width; j++) {
-            grille[i][j] = 0
+            grille[i][j] = {
+                'players': [],
+                'inventaire': []
+            };
         }
     }
 
@@ -62,32 +90,45 @@ const Map = (width, height) => {
         maxDistance
     };
 
-    for (let i=0; i < width; i++) {
-        for (let j=0; j < height; j++) {
-            putEvent(map, i, j);
-        }
-    }
-
-    setGrille(map, 0, 0, buildingModel.Base());
-
     return map;
 };
 
 const Partie = () => {
     let id = nextPartieId++;
-    let map = Map(200, 200);
+    let map = Map(200, 200, id);
 
-    joueurModel.newTeam(id);
-    let jId = joueurModel.Joueur(id);
     parties[id] = {
         id,
         map,
         batiments: {},
-        joueurs: [jId],
+        nextLvlBat: {
+            "forge": 0,
+            "armurerie": 0,
+            "infirmerie": 0,
+            "salleDeSport": 0,
+            "salleDeMusculation": 0,
+            "salleAObstacles": 0,
+            "salleACibles": 0,
+            "base": 0
+        },
         lvl: 0,
         karma: 0
     };
 
+    parties[id].base = buildingModel.Base();
+
+    for (let i=0; i < map.width; i++) {
+        for (let j=0; j < map.height; j++) {
+            putEvent(id, i, j);
+        }
+    }
+
+    addToCell(id, 0, 0, 'base', );
+    addToCell(id, 0, 0, 'type', 'base');
+
+    joueurModel.newTeam(id);
+    let jId = joueurModel.Joueur(id);
+    parties[id].joueurs = [jId];
 
     return parties[id];
 };
@@ -110,6 +151,24 @@ const getData = (partieId, key) => {
     return parties[partieId][key];
 }
 
+const construire = (pId, batiment) => {
+    let p = parties[pId];
+    let requirements = buildingModel.getRequirements( batiment, p.nextLvlBat[batiment]);
+
+    Object.keys(requirements).forEach( (key) => {
+        console.log(key)
+        if( p.base.ressources[key] < requirements[key]) {
+            return false;
+        }
+    });
+
+    p.nextLvlBat[batiment]++;
+    console.log( p.nextLvlBat[batiment] )
+
+    return true;
+
+}
+
 module.exports = {
     Map,
     Partie,
@@ -118,17 +177,19 @@ module.exports = {
     listParties,
     getData,
     setGrille,
-    getGrille
+    getGrille,
+    addToCell,
+    getMap,
+    mapToMap,
+    mapToRep,
+    parties,
+    construire
 };
 
 const test = () => {
-    testMap = Map(12, 12);
-    printMap(testMap)
-
-    testMap = Map(100, 100);
-    putEvent(testMap, 50, 50);
-    putEvent(testMap, 67, 54);
-    putEvent(testMap, 0, 50);
-    putEvent(testMap, 15, 15);
-    putEvent(testMap, 0, 0);
+    par = Partie();
+    printMap(par.map)
+    joueurModel.move(0, 0, 'n');
 }
+
+//test()

@@ -1,6 +1,6 @@
 const partieModel = require("../models/partie.js");
 
-const create = async(req, res) => {
+const create = (req, res) => {
     console.log('call create');
 
     try {
@@ -16,7 +16,7 @@ const create = async(req, res) => {
     }
 };
 
-const join = async(req, res) => {
+const join = (req, res) => {
     console.log('call join');
 
     try{
@@ -29,7 +29,7 @@ const join = async(req, res) => {
     }
 }
 
-const addPartieData = async(req, res, next) => {
+const addPartieData = (req, res, next) => {
     console.log('call addPartieData');
 
     try{
@@ -37,11 +37,11 @@ const addPartieData = async(req, res, next) => {
         next();
     } catch( err ) {
         console.log(`addPartieData: ${err}`);
-        res.status(0).send('err');
+        res.status(300).send('err');
     }
 }
 
-const listParties = async(req, res) => {
+const listParties = (req, res) => {
     console.log('call listParties');
 
     try {
@@ -49,19 +49,57 @@ const listParties = async(req, res) => {
         res.status(200).json(list);
     } catch( err ) {
         console.log(`listParties: ${err}`);
-        res.status(0).send('err');
+        res.status(300).send('err');
     }
+}
+
+const getBaseRessources = (req, res) => {
+    let pId = req.body.partieId;
+
+    console.log(pId);
+    let ressources = partieModel.parties[pId].base.ressources;
+
+    res.status(200).json(ressources);
 }
 
 const getGrille = (req, res) => {
     console.log('call getGrille');
 
     try {
-        let grille = partieModel.getData(req.body.partieId, 'map');
-        res.status(200).json(grille);
+        let map = partieModel.getMap(req.body.partieId);
+        grille = map.grille;
+        let [x, y] = partieModel.mapToRep(map, req.body.x, req.body.y)
+        let w = req.body.w;
+
+        console.log(w)
+        console.log(x)
+        console.log(y)
+
+        let g2 = [];
+        for( let i=0; i<w; i++) {
+            g2[i] = Array(w);
+            for( let j=0; j<w; j++)
+                g2[i][j] = grille[y-w/2 + i][x-w/2 + j];
+        }
+
+        console.log(g2)
+        
+        res.status(200).json(g2);
     } catch( err ) {
         console.log(`getGrille: ${err}`);
-        res.status(0).send('err');
+        res.status(300).send('err');
+    }
+}
+
+const construire = (req, res) => {
+    console.log('call construire');
+
+    try {
+        let check = partieModel.construire(req.body.partieId, req.body.batiment);
+        res.status(200).send( check );
+    } catch( err ) {
+        console.log(`construire: ${err}`);
+        res.status(300).send('err');
     }
 }
 
@@ -70,5 +108,7 @@ module.exports = {
     addPartieData,
     join,
     listParties,
-    getGrille
+    getGrille,
+    construire,
+    getBaseRessources
 };

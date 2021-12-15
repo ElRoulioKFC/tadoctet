@@ -8,16 +8,6 @@ joueurs :
     a agilité (chance d'esquive des joueurs et de fuite)  
     p perception (chance de toucher des armes à distance)
 
-
-
-Matériaux :
-  ferraille
-  bois
-  textile
-  alcool
-  médicaments
-
-
 fonctions gérées par le server :
   création de la grille de jeu liste à deux dimensions
   génération aléatoire de terrain la base étant en 0/0 la liste crée un environnement en -100/100 x comme y
@@ -49,51 +39,6 @@ objet:
 
     tesson de bouteille + 6 f -8 a
     Telisson de bouteille +20 f -5 a
-
-  Arme à distance :
-    pistolet -50% des pv
-    fusil -80% des pv
-    sniper kill - 8 a + 5 p
-    superGrosFlingueDePoche kill +2 a
-
-  Soins :
-    bandage 20 % des PVs
-    kit de fortune 33 %
-    kit industriel 50 %
-    kit de soin 75 % des PVs
-    kit ultime 100 %
-
-  Armure :
-    tête :
-      poubelle + 1 e
-      casserole + 2 e
-      casquette + 1 e
-
-      seau en bois + 3 e
-      casque en fer + 4 e
-      casque en acier + 6 e
-      casque en titane + 8 e
-      casque en peau de Roche + 19 e
-
-    corps :
-      armure en carton-pâte + 4 e
-      armure en cuir + 7 e
-      armure en plexiglass + 7 e
-      armure de fer + 11 e
-      armure en acier + 17 e
-      armure en titane + 20 e
-      armure en peau de Roche + 39 e
-
-    sac :
-      sac plastique carrouf + 3 slot
-      sac en peau de lézard + 5 slot
-      sac en cuir + 7 slot
-      sac en cuir de jaguar + 11 slot
-      sac westpocket + 17 slot
-      sac luc damiens + 25 slot
-      immense sac rando-rigolo + 50 slot
-      sac béchanelle +75 slot
-      sac en peau de roche +200 slot
 base :
 
   bâtiment :
