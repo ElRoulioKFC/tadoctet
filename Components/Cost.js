@@ -12,7 +12,7 @@ class Cost extends React.Component {
   }
 
   _afficheBois(){
-    if (this.bois > 0){
+    if (this.props.bois > 0){
       return(
         <Ressource
           ressource = "bois"
@@ -22,7 +22,7 @@ class Cost extends React.Component {
     }
   }
   _afficheFerraille(){
-    if (this.ferraille > 0){
+    if (this.props.ferraille > 0){
       return(
         <Ressource
           ressource = "ferraille"
@@ -32,7 +32,7 @@ class Cost extends React.Component {
     }
   }
   _afficheTextile(){
-    if (this.textile > 0){
+    if (this.props.textile > 0){
       return(
         <Ressource
           ressource = "textile"
@@ -42,7 +42,7 @@ class Cost extends React.Component {
     }
   }
   _afficheMedicament(){
-    if (this.medicament > 0){
+    if (this.props.medicament > 0){
       return(
         <Ressource
           ressource = "medicament"
@@ -52,7 +52,7 @@ class Cost extends React.Component {
     }
   }
   _afficheAlcool(){
-    if (this.alcool > 0){
+    if (this.props.alcool > 0){
       return(
         <Ressource
           ressource = "alcool"

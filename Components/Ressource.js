@@ -5,8 +5,6 @@ import {Text,StyleSheet,View,Image} from 'react-native'
 class Ressource extends React.Component {
   constructor(props){
     super(props)
-    this.ressource = props.ressource
-    this.number = props.number
   }
   _afficheImage(ressource){
       switch(ressource){
@@ -42,11 +40,11 @@ class Ressource extends React.Component {
     return(
     <View style={styles.main_container}>
       <View style={styles.container_image}>
-        {this._afficheImage(this.ressource)}
+        {this._afficheImage(this.props.ressource)}
       </View>
 
       <View style={styles.container_text}>
-        <Text style={styles.text}>{this.number}</Text>
+        <Text style={styles.text}>{this.props.number}</Text>
       </View>
     </View>
   )
