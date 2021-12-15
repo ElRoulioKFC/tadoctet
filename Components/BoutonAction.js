@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   texte : {
     flex : 1,
-    fontSize : 50,
+    fontSize : 40,
     color : 'white',
     fontWeight : 'bold',
     textTransform: 'uppercase',
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     flex : 1,
     textAlign : 'center',
     textAlignVertical: 'center',
+    paddingTop : 2,
   },
   container : {
     flex : 1

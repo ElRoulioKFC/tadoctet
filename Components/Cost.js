@@ -8,12 +8,7 @@ class Cost extends React.Component {
 
   constructor(props){
     super(props)
-    //props contiennent le nombre de chaque ressources
-    this.bois = props.bois
-    this.ferraille = props.ferraille
-    this.alcool = props.alcool
-    this.medicament = props.medicament
-    this.textile = props.textile
+
   }
 
   _afficheBois(){
@@ -21,7 +16,7 @@ class Cost extends React.Component {
       return(
         <Ressource
           ressource = "bois"
-          number = {this.bois}
+          number = {this.props.bois}
         />
       )
     }
@@ -31,7 +26,7 @@ class Cost extends React.Component {
       return(
         <Ressource
           ressource = "ferraille"
-          number = {this.ferraille}
+          number = {this.props.ferraille}
         />
       )
     }
@@ -41,7 +36,7 @@ class Cost extends React.Component {
       return(
         <Ressource
           ressource = "textile"
-          number = {this.textile}
+          number = {this.props.textile}
         />
       )
     }
@@ -51,7 +46,7 @@ class Cost extends React.Component {
       return(
         <Ressource
           ressource = "medicament"
-          number = {this.medicament}
+          number = {this.props.medicament}
         />
       )
     }
@@ -61,7 +56,7 @@ class Cost extends React.Component {
       return(
         <Ressource
           ressource = "alcool"
-          number = {this.alcool}
+          number = {this.props.alcool}
         />
       )
     }
