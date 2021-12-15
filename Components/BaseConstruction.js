@@ -13,8 +13,13 @@ class BaseConstruction extends React.Component {
     <Batiment
       nom = {"Base"}
       niveau = {"0"}
+      bois = {3}
+      ferraille = {3}
+      alcool = {3}
+      medicament = {3}
+      textile = {3}
     />
-  
+
     <Text>base construction</Text>
     </View>
   )

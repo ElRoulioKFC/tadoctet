@@ -6,7 +6,6 @@ class Batiment extends React.Component {
   constructor(props) {
     super(props)
     this._sourceImage = require("../Images/base.png")
-    this.nom = props.nom
   }
   render(){
     return(
@@ -14,7 +13,7 @@ class Batiment extends React.Component {
       <View style={styles.main_container}>
 
         <View style={styles.container_image}>
-        <Text style={styles.lvl}>{"lvl.0"}</Text>
+        <Text style={styles.lvl}>{"lvl." + this.props.niveau +""}</Text>
           <Image
             style={styles.image}
             source={this._sourceImage}
@@ -24,7 +23,7 @@ class Batiment extends React.Component {
         <View style={styles.container_info}>
 
           <View style={styles.container_name}>
-            <Text style={styles.title}>{this.nom} </Text>
+            <Text style={styles.title}>{this.props.nom} </Text>
           </View>
 
           <View style={styles.container_build}>
@@ -38,11 +37,11 @@ class Batiment extends React.Component {
             <View style={styles.container_cost}>
               <Cost
                 style={styles.cost}
-                bois = {3}
-                ferraille = {3}
-                alcool = {3}
-                medicament = {3}
-                textile = {3}
+                bois = {this.props.bois}
+                ferraille = {this.props.ferraille}
+                alcool = {this.props.alcool}
+                medicament = {this.props.medicament}
+                textile = {this.props.textile}
 
               />
             </View>

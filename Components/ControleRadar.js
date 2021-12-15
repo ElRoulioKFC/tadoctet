@@ -7,44 +7,49 @@ class ControleRadar extends React.Component {
       <View style = {styles.main_container}>
 
       <View style={styles.row}>
-        <Pressable style={styles.pressable} >
+        <Pressable style={styles.pressable} onPress={()=>console.log("perso")}>
           <Image
             style={styles.image}
             source={require("../Images/perso.png")}
+
           />
         </Pressable>
 
-        <Pressable style={styles.pressable} >
+        <Pressable style={styles.pressable} onPress={()=>console.log("haut")}>
           <Image
             style={styles.image}
             source={require("../Images/haut.png")}
+
           />
         </Pressable>
 
-        <Pressable style={styles.pressable} >
+        <Pressable style={styles.pressable} onPress={()=>()=>console.log("plus")}>
           <Image
             style={styles.image}
             source={require("../Images/plus.png")}
+
           />
         </Pressable>
       </View>
 
       <View style={styles.row}>
-      <Pressable style={styles.pressable} >
+      <Pressable style={styles.pressable} onPress={()=>console.log("gauche")} >
         <Image
           style={styles.image}
           source={require("../Images/gauche.png")}
+
+
         />
       </Pressable>
 
-      <Pressable style={styles.pressable} >
+      <Pressable style={styles.pressable} onPress={()=>{this.props.update()}}>
         <Image
           style={styles.image}
           source={require("../Images/radar.png")}
         />
       </Pressable>
 
-      <Pressable style={styles.pressable} >
+      <Pressable style={styles.pressable} onPress={()=>console.log("droite")}>
         <Image
           style={styles.image}
           source={require("../Images/droite.png")}
@@ -53,21 +58,23 @@ class ControleRadar extends React.Component {
       </View>
 
       <View style={styles.row}>
-      <Pressable style={styles.pressable} >
+      <Pressable style={styles.pressable} onPress={()=>console.log("base")}>
         <Image
           style={styles.image}
           source={require("../Images/base.png")}
+
+
         />
       </Pressable>
 
-      <Pressable style={styles.pressable} >
+      <Pressable style={styles.pressable} onPress={()=>console.log("bas")}>
         <Image
           style={styles.image}
           source={require("../Images/bas.png")}
         />
       </Pressable>
 
-      <Pressable style={styles.pressable} >
+      <Pressable style={styles.pressable}  onPress={()=>console.log("moins")}>
         <Image
           style={styles.image}
           source={require("../Images/moins.png")}

@@ -5,14 +5,13 @@ import {Text,StyleSheet,View,TouchableOpacity,Pressable} from 'react-native'
 class BoutonAction extends React.Component {
   constructor(props){
     super(props)
-    this.texte = props.texte
   }
   render(){
     return(
       <View style={styles.main_container}>
         <Pressable style={styles.pressable}>
           <View style={styles.container_text}>
-            <Text adjustsFontSizeToFit={true} style={styles.texte}>{this.texte}</Text>
+            <Text adjustsFontSizeToFit={true} style={styles.texte}>{this.props.texte}</Text>
           </View>
         </Pressable>
         <View style = {styles.container}>

@@ -8,7 +8,7 @@ class Radar extends React.Component {
     super(props)
 
   }
-
+    
   _innerRadar(tableauRadar){
     var quadrillage = [];
     var quadrillageFinal = [];
