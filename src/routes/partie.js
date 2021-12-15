@@ -54,12 +54,25 @@ const listParties = (req, res) => {
 }
 
 const getBaseRessources = (req, res) => {
+    console.log('hi')
     let pId = req.body.partieId;
 
     console.log(pId);
     let ressources = partieModel.parties[pId].base.ressources;
 
+    ressources.medicament = ressources.medicaments;
+    ressources.medicaments = undefined;
     res.status(200).json(ressources);
+}
+
+const getBaseBatiments = (req, res) => {
+    console.log('hi')
+    let pId = req.body.partieId;
+
+    console.log(pId);
+    let batiments = partieModel.parties[pId].batiments;
+
+    res.status(200).json(batiments);
 }
 
 const getGrille = (req, res) => {
@@ -110,5 +123,6 @@ module.exports = {
     listParties,
     getGrille,
     construire,
-    getBaseRessources
+    getBaseRessources,
+    getBaseBatiments
 };

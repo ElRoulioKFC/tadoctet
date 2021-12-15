@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 #create a partie
 echo ============== create a partie ==============
 curl 127.0.0.1:3000/createPartie > res_player1
@@ -13,6 +14,7 @@ echo "{\"partieId\": $(cat res_parties |  jq '.[0]')}" > query_partie
 echo ============== connect to a partie ==============
 curl -X GET -d "@query_partie" -H "Content-Type: application/json" 127.0.0.1:3000/join > res_player2
 
+curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBaseRessources > res_ress
 #get batiment cost
 echo ============== get batiment cost ==============
 curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostSalleDeMusculation > res_salleDeMusculation

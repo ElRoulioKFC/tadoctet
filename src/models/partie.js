@@ -162,8 +162,15 @@ const construire = (pId, batiment) => {
         }
     });
 
-    p.nextLvlBat[batiment]++;
+    let niveau = p.nextLvlBat[batiment]++; 
+    let cout = buildingModel.getRequirements( batiment, p.nextLvlBat[batiment] );
+    p.batiments[batiment] = {
+        nom: batiment,
+        niveau,
+        cout
+    }
     console.log( p.nextLvlBat[batiment] )
+    console.log( p.batiments )
 
     return true;
 

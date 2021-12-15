@@ -11,8 +11,12 @@ app.get("/", (req, res) => {
     res.status(200).send("hello");
 })
 
-app.get("/getBaseRessources",
+app.post("/getBaseRessources",
     router.partie.getBaseRessources
+);
+
+app.post("/getBaseBatiments",
+    router.partie.getBaseBatiments
 );
 
 app.get("/createPartie",

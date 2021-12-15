@@ -49,4 +49,3 @@ echo ============== getGrille ==============
 
 echo ============== construire ==============
 curl -X GET -H "Content-Type: application/json" -d "@query_constr" 127.0.0.1:3000/construire > res_constr
-curl -X GET -H "Content-Type: application/json" -d "@res_player1" 127.0.0.1:3000/getBatimentCostBase > res_base
