@@ -7,39 +7,115 @@ class Inventaire extends React.Component {
   render(){
     return(
       <View style={styles.main_container}>
-        <View style={styles.container_sac}>
-          <Sac/>
-        </View>
-
-        <View style={styles.container_button}>
-            <Pressable style={styles.pressable_button}>
-              <View style={styles.container_image}>
-                <Image
-                style={styles.image}
-                source={require("../Images/haut.png")}
-                />
-              </View>
-              <View style={styles.container_text}>
-                <Text adjustsFontSizeToFit={true} style={styles.texte}>{"sol"}</Text>
-              </View>
-            </Pressable>
-            <View style={styles.border}>
+        <View style={styles.container}>
+          <View style={styles.inner_container}>
+            <View style={styles.container_title}>
+              <Text style={styles.text_title}>EQUIPEMENT</Text>
             </View>
-            <Pressable style={styles.pressable_button}>
-              <View style={styles.container_text}>
-                <Text adjustsFontSizeToFit={true} style={styles.texte}>{"sac"}</Text>
+            <View style={styles.container_cont}>
+              <View style={styles.container_body}>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>CASQUE</Text>
+                    <Text style={styles.text}>casque en cuir</Text>
+                </View>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>armure</Text>
+                    <Text style={styles.text}>armure en cuir</Text>
+                  </View>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>sac</Text>
+                    <Text style={styles.text}>sac en cuir</Text>
+                </View>
               </View>
-              <View style={styles.container_image}>
-                <Image
-                style={styles.image}
-                source={require("../Images/bas.png")}
-                />
+              <View style={styles.container_weapon}>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>Arme CaC</Text>
+                    <Text style={styles.text}>épée en bois</Text>
+                </View>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>Arme à distance</Text>
+                    <Text style={styles.text}>pistolet</Text>
+                </View>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>Soins</Text>
+                    <Text style={styles.text}>kit de fortune</Text>
+                </View>
               </View>
-            </Pressable>
+            </View>
+          </View>
         </View>
 
-        <View style={styles.container_sac}>
-          <Sac/>
+        <View style={styles.container}>
+          <View style={styles.inner_container}>
+            <View style={styles.container_title}>
+              <Text style={styles.text_title}>STATS</Text>
+            </View>
+            <View style={styles.container_cont}>
+              <View style={styles.container_weapon}>
+
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>Dégâts</Text>
+                    <Text style={styles.text}>14</Text>
+                </View>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>PVmax</Text>
+                    <Text style={styles.text}>70</Text>
+                </View>
+              </View>
+              <View style={styles.container_weapon}>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>fuite</Text>
+                    <Text style={styles.text}>37</Text>
+                </View>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>esquive</Text>
+                    <Text style={styles.text}>32</Text>
+                </View>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>Touche</Text>
+                    <Text style={styles.text}>48</Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.container}>
+          <View style={styles.inner_container}>
+            <View style={styles.container_title}>
+              <Text style={styles.text_title}>SAC</Text>
+            </View>
+            <View style={styles.container_cont}>
+              <View style={styles.container_weapon}>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>Place</Text>
+                    <Text style={styles.text}>24/60</Text>
+                </View>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>Alcool</Text>
+                    <Text style={styles.text}>14</Text>
+                </View>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>Ferraille</Text>
+                    <Text style={styles.text}>70</Text>
+                </View>
+              </View>
+              <View style={styles.container_weapon}>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>bois</Text>
+                    <Text style={styles.text}>37</Text>
+                </View>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>médicament</Text>
+                    <Text style={styles.text}>32</Text>
+                </View>
+                <View style={styles.container_text}>
+                    <Text style={styles.text_sub_title}>textile</Text>
+                    <Text style={styles.text}>48</Text>
+                </View>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
   )
@@ -51,37 +127,53 @@ const styles = StyleSheet.create({
     flex : 1,
     backgroundColor : 'black'
   },
-  container_button : {
-    flex : 1,
-    flexDirection : 'row',
-    margin : 10,
-    borderRadius : 20
+  text_title : {
+    fontSize : 30,
+    color : 'white',
+    fontWeight : 'bold',
+    textTransform: 'uppercase',
   },
-  pressable_button : {
+  container : {
+    flex : 1,
+    backgroundColor : 'white',
+    margin : 7.5
+
+  },
+  inner_container : {
+    flex : 1,
+    backgroundColor : 'black',
+    margin : 2.5
+  },
+  container_title : {
     flex : 2,
-    backgroundColor : 'grey',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  container_cont: {
+    flex : 7,
     flexDirection : 'row',
-    borderRadius : 6,
-    padding : 20
-
   },
-  container_sac : {
-    flex : 3,
-
+  text : {
+    fontSize : 18,
+    color : 'white',
+    fontWeight : 'bold',
   },
-  texte : {
-    fontSize : 25
+  text_sub_title : {
+    fontSize : 15,
+    color : 'white',
+    fontWeight : 'bold',
+    textTransform: 'uppercase',
+  },
+  container_body : {
+    flex : 1,
+    margin : 6,
+  },
+  container_weapon : {
+    flex : 1,
   },
   container_text : {
-    flex : 1
-  },
-  container_image : {
-    flex : 1
-  },
-  border : {
     flex : 1,
+    margin : 6,
   }
 })
 export default Inventaire
