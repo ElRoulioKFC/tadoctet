@@ -49,12 +49,11 @@ class Inventaire extends React.Component {
 const styles = StyleSheet.create({
   main_container : {
     flex : 1,
-    backgroundColor : '#600080'
+    backgroundColor : 'black'
   },
   container_button : {
     flex : 1,
     flexDirection : 'row',
-    backgroundColor : '#600080',
     margin : 10,
     borderRadius : 20
   },
@@ -83,7 +82,6 @@ const styles = StyleSheet.create({
   },
   border : {
     flex : 1,
-    backgroundColor : '#600080'
   }
 })
 export default Inventaire

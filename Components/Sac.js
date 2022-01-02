@@ -1,13 +1,18 @@
 import React from 'react'
-import {Text,StyleSheet,View,TouchableOpacity} from 'react-native'
-
+import {Text,StyleSheet,View,FlatList} from 'react-native'
 
 class Sac extends React.Component {
+  constructor(props){
+    super(props)
+  }
+
+
   render(){
     return(
       <View style={styles.main_container}>
         <View style={styles.container_ext}>
           <View style={styles.container_int}>
+            {this._objetSac(this.props.listeObjet)}
           </View>
         </View>
       </View>

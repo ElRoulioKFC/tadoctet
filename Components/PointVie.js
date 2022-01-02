@@ -11,7 +11,6 @@ class PointVie extends React.Component {
   }
 
   _greenCalc(pv,pvMax){
-    console.log("ici")
     const flexVert = Math.floor(pv / pvMax * 100)
     return{
       backgroundColor : 'green',

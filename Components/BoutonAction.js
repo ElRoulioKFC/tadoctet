@@ -28,23 +28,22 @@ const styles = StyleSheet.create({
     margin : 5
   },
   pressable : {
-    flex : 1,
+    flex : 2,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor : 'black',
   },
   texte : {
-    flex : 1,
     fontSize : 40,
     color : 'white',
     fontWeight : 'bold',
     textTransform: 'uppercase',
-
-
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlignVertical: 'center',
 
   },
   container_text : {
-    flex : 1,
     textAlign : 'center',
     textAlignVertical: 'center',
     paddingTop : 2,

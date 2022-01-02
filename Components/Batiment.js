@@ -27,13 +27,6 @@ class Batiment extends React.Component {
           </View>
 
           <View style={styles.container_build}>
-            <View style={styles.container_button}>
-              <Pressable style={styles.button_construction} >
-                <Text style={styles.text_button}>Construire</Text>
-              </Pressable>
-
-            </View>
-
             <View style={styles.container_cost}>
               <Cost
                 style={styles.cost}
@@ -45,6 +38,26 @@ class Batiment extends React.Component {
 
               />
             </View>
+            <View style={styles.container_button}>
+              <Pressable style={styles.button_construction} >
+                <Image
+                  style={styles.image}
+                  source={require("../Images/upgrade.png")}
+                />
+              </Pressable>
+
+            </View>
+            <View style={styles.container_button}>
+              <Pressable style={styles.button_construction} >
+                <Image
+                style={styles.image}
+
+                  source={require("../Images/info.png")}
+                />
+              </Pressable>
+
+            </View>
+
           </View>
         </View>
 
@@ -63,10 +76,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   image : {
-    height: 50,
-    width : 50,
     flex : 1,
-    margin : 10
+    height : '90%',
+    width : '90%'
   },
   container_image :{
     alignItems: 'center',
@@ -95,8 +107,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 4,
     elevation: 3,
-    backgroundColor: '#0f74aa',
-    flex : 1
+    height : '60%',
+    width : '60%'
   },
   text_button : {
     fontSize: 20,
@@ -106,7 +118,9 @@ const styles = StyleSheet.create({
 
 
   container_button : {
-    flex : 2
+    flex : 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   lvl : {
     fontSize: 30,

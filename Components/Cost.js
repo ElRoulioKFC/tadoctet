@@ -64,7 +64,6 @@ class Cost extends React.Component {
   render(){
     return(
     <View style={styles.main_container}>
-      <Text style={styles.text}>{"COUT :"}</Text>
       <View style={styles.row}>
         <View style={styles.ressource}>
           {this._afficheBois()}

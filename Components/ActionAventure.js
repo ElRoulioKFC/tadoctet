@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     flex : 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor : 'blue',
+    backgroundColor : 'white',
     borderRadius: 4,
   },
   texte : {

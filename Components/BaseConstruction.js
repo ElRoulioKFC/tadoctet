@@ -63,7 +63,7 @@ class BaseConstruction extends React.Component {
       <View style={styles.container_batiment}>
         <Batiment
           style={{flex : 1}}
-          nom = {"Base"}
+          nom = {"Salle de musculation"}
           niveau = {"0"}
           bois = {3}
           ferraille = {3}

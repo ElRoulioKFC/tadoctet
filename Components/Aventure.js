@@ -13,7 +13,7 @@ class Aventure extends React.Component {
         <TexteAventure/>
       </View>
       <View style = {styles.container_action}>
-        <ActionAventure listeChoix = {['combattre','fuir','parler']}/>
+        <ActionAventure listeChoix = {['combattre','test','casser','entrer','baiser']}/>
       </View>
     </View>
 
@@ -27,11 +27,11 @@ const styles = StyleSheet.create({
   },
   container_text : {
     flex : 4,
-    backgroundColor : 'blue'
+    backgroundColor : 'white'
   },
   container_action : {
     flex : 3,
-    backgroundColor : '#000080'
+    backgroundColor : 'white'
   }
 })
 export default Aventure
