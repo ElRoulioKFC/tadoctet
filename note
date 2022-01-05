@@ -1,0 +1,15 @@
+/join (rejoindre une partie)
+/list (liste les parties disponible)
+/construire
+/getGrille
+/move
+/fouiller
+/ramasser
+/eventResponse
+/getBatimentCostSalleDeMusculation
+/getBatimentCostSalleDeSport
+/getBatimentCostSalleACibles
+/getBatimentCostInfirmerie
+/getBatimentCostArmurerie
+/getBatimentCostForge
+/getBatimentCostBase

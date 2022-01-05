@@ -15,7 +15,7 @@ class BaseConstruction extends React.Component {
       textile : 0,
       medicament : 0,
       alcool : 0
-        }
+    }
   }
   _action(listeBatiment){
     var batiments = [];
