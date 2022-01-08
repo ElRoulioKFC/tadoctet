@@ -154,12 +154,12 @@ const styles = StyleSheet.create({
     flexDirection : 'row',
   },
   text : {
-    fontSize : 18,
+    fontSize : 20,
     color : 'white',
     fontWeight : 'bold',
   },
   text_sub_title : {
-    fontSize : 15,
+    fontSize : 14,
     color : 'white',
     fontWeight : 'bold',
     textTransform: 'uppercase',
