@@ -1,4 +1,4 @@
-const ADRESSE = 'http://192.168.1.15:3000/';
+const ADRESSE = 'http://127.0.0.1:4000/';
 
 function mkReq( body ) {
   return {
@@ -8,7 +8,7 @@ function mkReq( body ) {
     },
     body: JSON.stringify( body ),
   };
-};
+}
 
 export async function getRessource (param)  {
   const url = ADRESSE + 'getBaseRessources'
@@ -20,7 +20,7 @@ export async function getRessource (param)  {
     .catch(e => { throw e; });
 
   return result;
-};
+}
 
 export async function getBatiments (param)  {
   const url = ADRESSE + 'getBaseBatiments'
@@ -32,7 +32,7 @@ export async function getBatiments (param)  {
     .catch(e => { throw e; });
 
   return result;
-};
+}
 
 export async function join (param)  {
   const url = ADRESSE + 'join'
@@ -44,7 +44,7 @@ export async function join (param)  {
     .catch(e => { throw e; });
 
   return result;
-};
+}
 
 
 export async function getGrille( param ) {

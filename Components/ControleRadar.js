@@ -7,7 +7,7 @@ class ControleRadar extends React.Component {
       <View style = {styles.main_container}>
 
       <View style={styles.row}>
-        <Pressable style={styles.pressable} onPress={()=>console.log("perso")}>
+        <Pressable style={styles.pressable} onPress={()=>{console.log("perso")}}>
           <Image
             style={styles.image}
             source={require("../Images/perso.png")}
@@ -15,7 +15,7 @@ class ControleRadar extends React.Component {
           />
         </Pressable>
 
-        <Pressable style={styles.pressable} onPress={()=>console.log("haut")}>
+        <Pressable style={styles.pressable} onPress={()=>{this.props.up()}}>
           <Image
             style={styles.image}
             source={require("../Images/haut.png")}
@@ -23,7 +23,7 @@ class ControleRadar extends React.Component {
           />
         </Pressable>
 
-        <Pressable style={styles.pressable} onPress={()=>()=>console.log("plus")}>
+        <Pressable style={styles.pressable} onPress={()=>{this.props.zoomIn}}>
           <Image
             style={styles.image}
             source={require("../Images/plus.png")}
@@ -33,7 +33,7 @@ class ControleRadar extends React.Component {
       </View>
 
       <View style={styles.row}>
-      <Pressable style={styles.pressable} onPress={()=>console.log("gauche")} >
+      <Pressable style={styles.pressable} onPress={()=>{this.props.left()}} >
         <Image
           style={styles.image}
           source={require("../Images/gauche.png")}
@@ -49,7 +49,7 @@ class ControleRadar extends React.Component {
         />
       </Pressable>
 
-      <Pressable style={styles.pressable} onPress={()=>console.log("droite")}>
+      <Pressable style={styles.pressable} onPress={()=>{this.props.right()}}>
         <Image
           style={styles.image}
           source={require("../Images/droite.png")}
@@ -58,7 +58,7 @@ class ControleRadar extends React.Component {
       </View>
 
       <View style={styles.row}>
-      <Pressable style={styles.pressable} onPress={()=>console.log("base")}>
+      <Pressable style={styles.pressable} onPress={()=>{this.props.focusHome()}}>
         <Image
           style={styles.image}
           source={require("../Images/base.png")}
@@ -67,14 +67,14 @@ class ControleRadar extends React.Component {
         />
       </Pressable>
 
-      <Pressable style={styles.pressable} onPress={()=>console.log("bas")}>
+      <Pressable style={styles.pressable} onPress={()=>{this.props.down()}}>
         <Image
           style={styles.image}
           source={require("../Images/bas.png")}
         />
       </Pressable>
 
-      <Pressable style={styles.pressable}  onPress={()=>console.log("moins")}>
+      <Pressable style={styles.pressable}  onPress={()=>{this.props.zoomOut}}>
         <Image
           style={styles.image}
           source={require("../Images/moins.png")}

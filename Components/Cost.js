@@ -1,14 +1,10 @@
 import React from 'react'
-import {Text,StyleSheet,View,Image} from 'react-native'
+import {StyleSheet,View} from 'react-native'
 import Ressource from "./Ressource.js"
 
 class Cost extends React.Component {
-
-
-
   constructor(props){
     super(props)
-
   }
 
   _afficheBois(){

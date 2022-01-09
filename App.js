@@ -9,6 +9,8 @@ import BaseRadar from './Components/BaseRadar.js';
 import Aventure from './Components/Aventure.js';
 import Inventaire from './Components/Inventaire.js';
 import RejoindrePartie from './Components/RejoindrePartie.js'
+import requester from './API/requester'
+
 function HomeScreen({navigation}) {
   return (
     <View style={styles.main_container}>
@@ -19,14 +21,14 @@ function HomeScreen({navigation}) {
         <View style={styles.caban_way}>
           <Pressable
             style={styles.Pressable_caban}
-            onPress = {()=>navigation.navigate('Root')}>
+            onPress = {()=>{requester.joinPartie({}); navigation.navigate('Root')}}>
               <Text style={styles.Pressable_text}>Le confort</Text>
           </Pressable>
         </View>
         <View style={styles.exterior_way}>
           <Pressable
             style={styles.Pressable_exterior}
-            onPress =  {()=>navigation.navigate('Aventurier')}>
+            onPress =  {()=>{requester.joinPartie({}); navigation.navigate('Aventurier')}}>
             <Text style={styles.Pressable_text}>L'aventure</Text>
 
           </Pressable>

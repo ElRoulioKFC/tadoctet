@@ -1,11 +1,10 @@
 import React from 'react'
-import {Text,StyleSheet,View,TouchableOpacity} from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {StyleSheet,View,TouchableOpacity} from 'react-native'
 import Batiment from "./Batiment.js"
 import Cost from "./Cost.js"
 import RessourceBase from './RessourceBase.js'
-import {getRessource,getHello} from '../API/appelApi.js'
+import requester from '../API/requester'
+
 class BaseConstruction extends React.Component {
   constructor(props){
     super(props)
@@ -16,6 +15,7 @@ class BaseConstruction extends React.Component {
       medicament : 0,
       alcool : 0
     }
+    this._getRessourceFromApi = this._getRessourceFromApi.bind(this);
   }
   _action(listeBatiment){
     var batiments = [];
@@ -39,10 +39,11 @@ class BaseConstruction extends React.Component {
   }
 
   async _getRessourceFromApi(){
-    var idPartie = 0
-    var ressources = await getRessource({idPartie})
+    let ressources = await requester.getBaseRessources()
+    console.log(ressources);
     this.setState({bois : ressources.bois, ferraille : ressources.ferraille,textile : ressources.textile,medicament : ressources.medicament,alcool : ressources.alcool })
   }
+
   render(){
     return(
     <View style={styles.main_container}>

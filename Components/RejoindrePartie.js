@@ -1,7 +1,6 @@
 import React from 'react'
 import {Text,StyleSheet,View,TextInput,TouchableWithoutFeedback,Keyboard} from 'react-native'
 
-
 class RejoindrePartie extends React.Component {
   constructor(props){
     super(props)
