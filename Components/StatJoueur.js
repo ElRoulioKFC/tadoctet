@@ -6,23 +6,17 @@ import PointVie from './PointVie.js'
 class StatJoueur extends React.Component {
   constructor(props){
     super(props)
-    this.endurance = props.endurance
-    this.agilite = props.agilite
-    this.force = props.force
-    this.perception = props.perception
-    this.pv = props.pv
-    this.pvMax = 10 * props.endurance
-    this.niveau = props.niveau
+    this.pvMax = 10 * this.props.endurance
   }
   render(){
     return(
       <View style={styles.main_container}>
         <View style={styles.container}>
-          <PointVie niveau={this.niveau} pv={this.pv} pvMax={this.pvMax}/>    
+          <PointVie niveau={this.props.niveau} pv={this.props.pv} pvMax={this.pvMax}/>
         </View>
 
         <View style={styles.container}>
-          <AllStat endurance={this.endurance} agilite={this.agilite} force={this.force} perception={this.perception}/>
+          <AllStat endurance={this.props.endurance} agilite={this.props.agilite} force={this.props.force} perception={this.props.perception}/>
         </View>
 
       </View>

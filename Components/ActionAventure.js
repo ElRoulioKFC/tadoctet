@@ -77,7 +77,7 @@ class ActionAventure extends React.Component {
           {this._action(this.listeChoix)}
         </View>
         <View style = {styles.container_life}>
-          <StatJoueur endurance={"7"} agilite={"7"} force={"7"} perception={"7"} niveau={"3"} pv = {55}/>
+          <StatJoueur endurance={this.props.endurance} agilite={this.props.agilite} force={this.props.force} perception={this.props.perception} niveau={this.props.endurance + this.props.force + this.props.agilite + this.props.perception} pv = {this.props.pv}/>
         </View>
       </View>
   )

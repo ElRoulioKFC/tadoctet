@@ -4,6 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Sac from './Sac.js'
 class Inventaire extends React.Component {
+  constructor(super){
+
+  }
   render(){
     return(
       <View style={styles.main_container}>
@@ -16,29 +19,29 @@ class Inventaire extends React.Component {
               <View style={styles.container_body}>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>CASQUE</Text>
-                    <Text style={styles.text}>casque en cuir</Text>
+                    <Text style={styles.text}>{this.props.helmet}</Text>
                 </View>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>armure</Text>
-                    <Text style={styles.text}>armure en cuir</Text>
+                    <Text style={styles.text}>{this.props.armor}</Text>
                   </View>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>sac</Text>
-                    <Text style={styles.text}>sac en cuir</Text>
+                    <Text style={styles.text}>{this.props.bag}</Text>
                 </View>
               </View>
               <View style={styles.container_weapon}>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>Arme CaC</Text>
-                    <Text style={styles.text}>épée en bois</Text>
+                    <Text style={styles.text}>{this.props.weapon}</Text>
                 </View>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>Arme à distance</Text>
-                    <Text style={styles.text}>pistolet</Text>
+                    <Text style={styles.text}>{this.props.weaponRange}</Text>
                 </View>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>Soins</Text>
-                    <Text style={styles.text}>kit de fortune</Text>
+                    <Text style={styles.text}>{this.props.heal}</Text>
                 </View>
               </View>
             </View>
@@ -55,25 +58,25 @@ class Inventaire extends React.Component {
 
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>Dégâts</Text>
-                    <Text style={styles.text}>14</Text>
+                    <Text style={styles.text}>{this.props.damage}</Text>
                 </View>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>PVmax</Text>
-                    <Text style={styles.text}>70</Text>
+                    <Text style={styles.text}>{this.props.pvMax}</Text>
                 </View>
               </View>
               <View style={styles.container_weapon}>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>fuite</Text>
-                    <Text style={styles.text}>37</Text>
+                    <Text style={styles.text}>{this.props.run}</Text>
                 </View>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>esquive</Text>
-                    <Text style={styles.text}>32</Text>
+                    <Text style={styles.text}>{this.props.esquive}</Text>
                 </View>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>Touche</Text>
-                    <Text style={styles.text}>48</Text>
+                    <Text style={styles.text}>{this.props.touche}</Text>
                 </View>
               </View>
             </View>
@@ -89,29 +92,29 @@ class Inventaire extends React.Component {
               <View style={styles.container_weapon}>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>Place</Text>
-                    <Text style={styles.text}>24/60</Text>
+                    <Text style={styles.text}>{this.props.slotTaken}/{this.props.slot}</Text>
                 </View>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>Alcool</Text>
-                    <Text style={styles.text}>14</Text>
+                    <Text style={styles.text}>{this.props.alcool}</Text>
                 </View>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>Ferraille</Text>
-                    <Text style={styles.text}>70</Text>
+                    <Text style={styles.text}>{this.props.ferraille}</Text>
                 </View>
               </View>
               <View style={styles.container_weapon}>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>bois</Text>
-                    <Text style={styles.text}>37</Text>
+                    <Text style={styles.text}>{this.props.bois}</Text>
                 </View>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>médicament</Text>
-                    <Text style={styles.text}>32</Text>
+                    <Text style={styles.text}>{this.props.medicament}</Text>
                 </View>
                 <View style={styles.container_text}>
                     <Text style={styles.text_sub_title}>textile</Text>
-                    <Text style={styles.text}>48</Text>
+                    <Text style={styles.text}>{this.props.textile}</Text>
                 </View>
               </View>
             </View>

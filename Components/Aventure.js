@@ -6,6 +6,9 @@ import TexteAventure from './TexteAventure.js';
 import ActionAventure from './ActionAventure.js';
 
 class Aventure extends React.Component {
+
+
+
   render(){
     return(
     <View style = {styles.main_container}>
@@ -16,7 +19,6 @@ class Aventure extends React.Component {
         <ActionAventure listeChoix = {['combattre','test','casser','entrer','baiser']}/>
       </View>
     </View>
-
   )
   }
 }
@@ -34,4 +36,11 @@ const styles = StyleSheet.create({
     backgroundColor : 'white'
   }
 })
-export default Aventure
+
+const mapStateToProps = state => {
+  return {
+    favoritesFilm: state.favoritesFilm
+  }
+}
+
+export connect(mapStateToProps)(Aventure)
