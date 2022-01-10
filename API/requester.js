@@ -69,6 +69,16 @@ class requester {
         return res;
     }
 
+    static async getEquipement() {
+        let res = await requester.request("getEquipement", {});
+        return res;
+    }
+
+    static async getInventaire() {
+        let res = await requester.request("getInventaire", {});
+        return res;
+    }
+
     static async move(dir) {
         let res = await requester.request("move", {dir});
         return res;
