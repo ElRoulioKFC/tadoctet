@@ -3,6 +3,8 @@ import {Text,StyleSheet,View,TouchableOpacity,Pressable,Image} from 'react-nativ
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Sac from './Sac.js'
+import {connect} from 'react-redux'
+
 class Inventaire extends React.Component {
   constructor(super){
 
@@ -179,4 +181,8 @@ const styles = StyleSheet.create({
     margin : 6,
   }
 })
-export default Inventaire
+
+const mapStateToProps = (state) => {
+  return state
+}
+export default connect(mapStateToProps)(Inventaire)
