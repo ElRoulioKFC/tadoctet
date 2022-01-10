@@ -83,6 +83,11 @@ class requester {
         let res = await requester.request("move", {dir});
         return res;
     }
+
+    static async respsonseEvent(choix) {
+        let res = await requester.request("eventResponse", {choix});
+        return res;
+    }
 }
 
 export default requester;
