@@ -13,7 +13,7 @@ class Aventure extends React.Component {
         <TexteAventure/>
       </View>
       <View style = {styles.container_action}>
-        <ActionAventure listeChoix = {['combattre','test','casser','entrer','baiser']}/>
+        <ActionAventure listeChoix = {['combattre','bouger','attaquer','entrer','fouiller']}/>
       </View>
     </View>
 

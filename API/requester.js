@@ -64,6 +64,11 @@ class requester {
         return res;
     }
 
+    static async getStats() {
+        let res = await requester.request("getStats", {});
+        return res;
+    }
+
     static async move(dir) {
         let res = await requester.request("move", {dir});
         return res;
