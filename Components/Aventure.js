@@ -13,10 +13,10 @@ class Aventure extends React.Component {
     return(
     <View style = {styles.main_container}>
       <View style = {styles.container_text}>
-        <TexteAventure/>
+        <TexteAventure texte={this.props.texteAventure}/>
       </View>
       <View style = {styles.container_action}>
-        <ActionAventure listeChoix = {['combattre','bouger','attaquer','entrer','fouiller']}/>
+        <ActionAventure listeChoix = {this.props.listeBoutonAventure}/>
       </View>
     </View>
   )
