@@ -23,7 +23,7 @@ class ControleRadar extends React.Component {
           />
         </Pressable>
 
-        <Pressable style={styles.pressable} onPress={()=>{this.props.zoomIn}}>
+        <Pressable style={styles.pressable} onPress={()=>{this.props.zoomIn()}}>
           <Image
             style={styles.image}
             source={require("../Images/plus.png")}
@@ -74,7 +74,7 @@ class ControleRadar extends React.Component {
         />
       </Pressable>
 
-      <Pressable style={styles.pressable}  onPress={()=>{this.props.zoomOut}}>
+      <Pressable style={styles.pressable}  onPress={()=>{this.props.zoomOut()}}>
         <Image
           style={styles.image}
           source={require("../Images/moins.png")}

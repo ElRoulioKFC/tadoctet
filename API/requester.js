@@ -32,21 +32,41 @@ class requester {
         return result;
     }
 
-    static async getBaseRessources() {
-        let res = await requester.request("getBaseRessources", {});
-        return res;
-    }
-
     static async joinPartie(params) {
         console.log("joinPartie");
-        let res = await requester.request("joinPartie", params);
-        requester.data.jId = res.playerId;
-        return res;
+        if( requester.data.jId ) {
+            console.log("already connected");
+        }
+        else{
+            let res = await requester.request("joinPartie", params);
+            requester.data.jId = res.playerId;
+        }
+        return requester.data.jId;
     }
 
     static async getGrille(params) {
         console.log("getGrille");
         return (await requester.request("getGrille", params)).grille;
+    }
+
+    static async getBaseRessources() {
+        let res = await requester.request("getBaseRessources", {});
+        return res;
+    }
+
+    static async getBaseBatiments() {
+        let res = await requester.request("getBaseBatiments", {});
+        return res;
+    }
+
+    static async construire(batiment) {
+        let res = await requester.request("construire", {batiment});
+        return res;
+    }
+
+    static async move(dir) {
+        let res = await requester.request("move", {dir});
+        return res;
     }
 }
 

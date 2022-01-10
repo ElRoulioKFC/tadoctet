@@ -5,15 +5,36 @@ import Cost from "./Cost.js"
 class Batiment extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      bois: null,
+      ferraille: null,
+      alcool: null,
+      medicament: null,
+      textile: null,
+      lvl: null
+    }
     this._sourceImage = require("../Images/base.png")
   }
+
+  componentDidMount() {
+    const {bois, ferraille, alcool, medicament, textile, lvl} = this.props
+    this.setState({
+      bois,
+      ferraille,
+      alcool,
+      medicament,
+      textile,
+      lvl
+    });
+  }
+
   render(){
     return(
 
       <View style={styles.main_container}>
 
         <View style={styles.container_image}>
-        <Text style={styles.lvl}>{"lvl." + this.props.niveau +""}</Text>
+        <Text style={styles.lvl}>{"lvl." + this.state.lvl +""}</Text>
           <Image
             style={styles.image}
             source={this._sourceImage}
@@ -30,16 +51,23 @@ class Batiment extends React.Component {
             <View style={styles.container_cost}>
               <Cost
                 style={styles.cost}
-                bois = {this.props.bois}
-                ferraille = {this.props.ferraille}
-                alcool = {this.props.alcool}
-                medicament = {this.props.medicament}
-                textile = {this.props.textile}
+                bois = {this.state.bois}
+                ferraille = {this.state.ferraille}
+                alcool = {this.state.alcool}
+                medicament = {this.state.medicament}
+                textile = {this.state.textile}
 
               />
             </View>
             <View style={styles.container_button}>
-              <Pressable style={styles.button_construction} >
+              <Pressable style={styles.button_construction} onPress={() => {
+                this.props.upgrade(this.props.nom)
+                .then( batiment => {
+                  let requirements = batiment.requirements[batiment.lvl];
+                  this.setState(requirements)
+                  this.setState({lvl: batiment.lvl})
+                })
+              }}>
                 <Image
                   style={styles.image}
                   source={require("../Images/upgrade.png")}

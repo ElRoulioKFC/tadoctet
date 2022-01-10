@@ -12,7 +12,6 @@ class Sac extends React.Component {
       <View style={styles.main_container}>
         <View style={styles.container_ext}>
           <View style={styles.container_int}>
-            {this._objetSac(this.props.listeObjet)}
           </View>
         </View>
       </View>

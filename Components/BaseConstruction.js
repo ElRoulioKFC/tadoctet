@@ -1,7 +1,6 @@
 import React from 'react'
 import {StyleSheet,View,TouchableOpacity} from 'react-native'
 import Batiment from "./Batiment.js"
-import Cost from "./Cost.js"
 import RessourceBase from './RessourceBase.js'
 import requester from '../API/requester'
 
@@ -13,29 +12,36 @@ class BaseConstruction extends React.Component {
       ferraille : 0,
       textile : 0,
       medicament : 0,
-      alcool : 0
+      alcool : 0,
+      batiments: []
     }
-    this._getRessourceFromApi = this._getRessourceFromApi.bind(this);
+    this._getRessourceFromApi()
   }
-  _action(listeBatiment){
-    var batiments = [];
-    listeBatiment.forEach((batiment,i) => {
-      batiments.push(  <Batiment
-          key={i}
-          nom = {batiment.nom}
-          niveau = {batiment.niveau}
-          bois = {batiment.cout.bois}
-          ferraille = {batiment.cout.ferraille}
-          alcool = {batiment.cout.alcool}
-          medicament = {batiment.cout.medicament}
-          textile = {batiment.cout.textile}
-        />)
-    });
-    return(
-      <View style = {styles.container}>
-      {batiments}
-      </View>
-    )
+
+  componentDidMount(){
+    let batiments = [];
+
+    requester.getBaseBatiments()
+      .then(data => {
+        Object.keys(data).forEach( (k, i) => {
+          let b = data[k]
+          let requirements = b.requirements[b.lvl]
+          console.log(batiments)
+          batiments.push(
+            <Batiment
+              key={i}
+              nom = {b.name}
+              lvl = {b.lvl}
+              bois = {requirements.bois}
+              ferraille = {requirements.ferraille}
+              alcool = {requirements.alcool}
+              medicament = {requirements.medicament}
+              textile = {requirements.textile}
+              upgrade = {requester.construire}
+            />)
+          this.setState({batiments})
+        })
+      })
   }
 
   async _getRessourceFromApi(){
@@ -62,16 +68,7 @@ class BaseConstruction extends React.Component {
         </TouchableOpacity>
       </View>
       <View style={styles.container_batiment}>
-        <Batiment
-          style={{flex : 1}}
-          nom = {"Salle de musculation"}
-          niveau = {"0"}
-          bois = {3}
-          ferraille = {3}
-          alcool = {3}
-          medicament = {3}
-          textile = {3}
-        />
+        {this.state.batiments}
       </View>
 
     </View>
