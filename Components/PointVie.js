@@ -18,8 +18,6 @@ class PointVie extends React.Component {
      }
   }
   _redCalc(pv,pvMax){
-    console.log("la")
-
     const flexRouge = 100 - (Math.floor(pv / pvMax * 100))
     return{backgroundColor : 'red',
      flex : flexRouge,

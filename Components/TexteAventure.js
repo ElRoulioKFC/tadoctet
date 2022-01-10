@@ -3,19 +3,19 @@ import {Text,StyleSheet,View,TouchableOpacity,ScrollView} from 'react-native'
 
 
 class TexteAventure extends React.Component {
+  constructor(super){
+    super(props)
+  }
   render(){
     return(
       <ScrollView style={styles.main_container}>
         <Text style={styles.texte}>
-          Vous arrivez dans un secteur qui semble désert.
-          Il y a une rivière qui coule au loin.
-          Et un tas de ferraille se trouve devant vous.
+          {this.props.texte}
         </Text>
       </ScrollView>
   )
   }
 }
-
 const styles = StyleSheet.create({
   main_container : {
     flex : 1,

@@ -6,10 +6,17 @@ class BoutonAction extends React.Component {
   constructor(props){
     super(props)
   }
+
+  
+
+  _press(text){
+    _updateStore()
+
+  }
   render(){
     return(
       <View style={styles.main_container}>
-        <Pressable style={styles.pressable}>
+        <Pressable onPress={this._press(this.props.texte)} style={styles.pressable}>
           <View style={styles.container_text}>
             <Text adjustsFontSizeToFit={true} style={styles.texte}>{this.props.texte}</Text>
           </View>
