@@ -1,5 +1,6 @@
 import React from 'react'
 import {Text,StyleSheet,View,TouchableOpacity,Pressable} from 'react-native'
+import requester from '../API/requester'
 
 
 class BoutonAction extends React.Component {
@@ -7,11 +8,10 @@ class BoutonAction extends React.Component {
     super(props)
   }
 
-  
+
 
   _press(text){
-    _updateStore()
-
+    requester.respsonseEvent(text)
   }
   render(){
     return(
