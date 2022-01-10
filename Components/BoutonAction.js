@@ -10,8 +10,13 @@ class BoutonAction extends React.Component {
 
 
 
-  _press(text){
-    requester.respsonseEvent(text)
+  asynch _press(text){
+    await requester.respsonseEvent(text)
+    () => {
+      res = requester.getStats
+      const action = {type: "updateMaterialPlayer", value: {ferrailleJoueur : res.feraille}}
+      this.props.dispatch(action)
+    }
   }
   render(){
     return(
